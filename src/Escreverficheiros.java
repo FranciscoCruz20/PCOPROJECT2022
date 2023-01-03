@@ -1,14 +1,28 @@
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Escreverficheiros {
 
+
+
     public static void writeToFile(ArrayList<Utilizador> utilizadores, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Utilizadores.txt");
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Utilizador utilizador : utilizadores) {
-                printWriter.println(utilizador.getNome() + "," + utilizador.getEmail() + "," + utilizador.getFuncao() + "\n");
+                printWriter.println("Nome: " +utilizador.getNome() + ", Email: " + utilizador.getEmail() + ", Função: " + utilizador.getFuncao() + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeToFilecliente(ArrayList<Cliente> clientes, String fileName) {
+        try (FileWriter fileWriter = new FileWriter("Clientes.txt");
+             PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            for (Cliente cliente : clientes) {
+                printWriter.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail() + ", Telefone: " + cliente.getTelefone() + ", Nif: " + cliente.getNif() + ", Endereço: " + cliente.getEndereco() + ", Código Postal: " + cliente.getCodigo_postal() + ", País: " + cliente.getPais() + ", Informação adicional: " + cliente.getInformacao_adicional() + ", Método de pagamento: " + cliente.getPagamento_default() + ", Gestor: " + cliente.getGestor() +"\n");
             }
         } catch (Exception e) {
             e.printStackTrace();

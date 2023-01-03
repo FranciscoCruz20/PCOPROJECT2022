@@ -13,7 +13,70 @@ public class teste {
      */
 
     public static void main(String[] args) throws IOException {
+        menu_inicial();
+    }
+
+    public static void menu_inicial() throws IOException {
         Scanner input = new Scanner(System.in);
+        while (true) {
+            System.out.println("Menu:");
+            System.out.println("1 - Menu de administrador");
+            System.out.println("2 - Menu de utilizador");
+            System.out.println("3 - Sair");
+
+            int opcao = input.nextInt();
+            input.nextLine();
+
+            if (opcao == 1) {
+                menu_admin();
+            }
+            if (opcao == 2) {
+                menu_utilizador();
+            }
+            if (opcao == 3) {
+                break;
+            }
+        }
+    }
+
+    public static void menu_utilizador_inicial() throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+
+        Utilizador util = new Utilizador("nome","email","");
+        ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+
+        while (true) {
+            System.out.println("Insira o nome de utilizador e o email:");
+            String nome = input.nextLine();
+            String email = input.nextLine();
+            util.verificar_utilizador_confirmar(nome, email);
+            if (util.getConfrimacao_email()==false) {
+                System.out.println("1-Confirmar email");
+                int opcao = input.nextInt();
+                input.nextLine();
+                if(opcao == 1) {
+                    util.setConfrimacao_email(true);
+                    menu_utilizador();
+                }
+                else {
+                    System.out.println("Opção inválida");
+                }
+            }
+            else {
+                System.out.println("Validado");
+                menu_utilizador();
+
+            }
+        }
+    }
+
+    public static void menu_utilizador() {
+    }
+
+    //Menu para aceder como administrador:
+    public static void menu_admin() throws IOException{
+        Scanner input = new Scanner(System.in);
+
         Administrador admin = new Administrador("admin", "password");
         ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
@@ -62,7 +125,7 @@ public class teste {
 
                     }
                     else if(opcao == 3) {
-                        break;
+                        menu_inicial();
                     }
                     else {
                         System.out.println("Opção inválida");
@@ -72,7 +135,9 @@ public class teste {
                 System.out.println("Username ou password incorretos");
             }
         }
+
     }
+
 
 }
 

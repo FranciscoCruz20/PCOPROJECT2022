@@ -12,6 +12,7 @@ public class Cliente {
     private String pais;
     private String informacao_adicional;
     private String pagamento_default;
+    private Utilizador gestor;
     private static ArrayList<Cliente> clientes;
 
     //Verificar se o nome do cliente está na lista de clientes:
@@ -38,6 +39,15 @@ public class Cliente {
     }
 
     //Getters e Setters:
+
+
+    public Utilizador getGestor() {
+        return gestor;
+    }
+
+    public void setGestor(Utilizador gestor) {
+        this.gestor = gestor;
+    }
 
     public ArrayList<Cliente> getClientes() {
         return clientes;
