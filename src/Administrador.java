@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Administrador {
@@ -5,13 +6,29 @@ public class Administrador {
     //Atributos
     private String username;
     private String password;
+    private ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
     //Construtor:
-    public Administrador() {
+    public Administrador(String admin, String password) {
         this.username = "admin";
         this.password = "12345";
     }
 
+    public boolean login(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
+    public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) {
+        for(Utilizador utilizador : utilizadores) {
+            if(utilizador.getNome().equals(nome)) {
+                System.out.println();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
     public void validar_admin() {
         Scanner t = new Scanner(System.in);
         System.out.println("Username:");
@@ -27,9 +44,52 @@ public class Administrador {
         else {
             System.out.println("Dados errados, volte a tentar.");
             validar_admin();
+            System.out.print("Nome: ");
+            String nome = t.nextLine();
+            System.out.print("Email: ");
+            String email = t.nextLine();
+            Utilizador utilizador = new Utilizador(nome, email, funcao);
+            utilizador.add(utilizador);
         }
 
     }
+     */
+
+    /*
+    public void criar_utilizador(ArrayList<Utilizador> utilizadores) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("Email: ");
+        String email = scanner.nextLine();
+
+        Utilizador utilizador = new Utilizador(nome, email);
+        utilizadores.add(utilizador);
+
+    }
+     */
+
+    /*
+    void validar_utilizador() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("Email: ");
+        String email = scanner.nextLine();
+
+        Utilizador utilizador = new Utilizador(nome, email);
+
+        if (utilizadores.contains(utilizador)) {
+            System.out.println("Válido");
+        } else {
+            System.out.println("Inválido");
+        }
+    }
+     */
 
     //Getters e setters:
     public String getUsername() {

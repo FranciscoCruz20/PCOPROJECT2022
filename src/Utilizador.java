@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Utilizador {
@@ -8,17 +9,18 @@ public class Utilizador {
     private String email;
     private String cliente;
     private String funcao;
-    private ArrayList<String> utilizadores;
+    private static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+    private static List<Utilizador> clientes = new ArrayList<>();
 
     //Construtor:
-    public Utilizador() {
+    Utilizador(String nome, String email, String funcao) {
         this.nome = nome;
-        this.email = email;
-        this.cliente = cliente;
+        this.email = nome;
         this.funcao = funcao;
-        this.utilizadores = {"Joao"};
     }
 
+
+    /*
     //Registrar novo utilizador:
     public void registrar_utilizador() {
         setNome();
@@ -31,7 +33,14 @@ public class Utilizador {
 
         System.out.println(getNome() + getEmail() + getCliente());
 
-        }
+    }
+     */
+
+
+    public static void adicionar_cliente(Utilizador client) {
+        clientes.add(client);
+    }
+
 
 
 
@@ -55,6 +64,15 @@ public class Utilizador {
          */
 
     //Getters e setters:
+
+    public static List<Utilizador> getClientes() {
+        return clientes;
+    }
+
+    public static void setClientes(List<Utilizador> clientes) {
+        Utilizador.clientes = clientes;
+    }
+
     public String getFuncao() {
         return funcao;
     }
@@ -87,6 +105,7 @@ public class Utilizador {
     }
 
     public void setNome() {
+        /*
         Scanner t = new Scanner(System.in);
         System.out.println("Nome:");
         String nome = t.next();
@@ -98,6 +117,7 @@ public class Utilizador {
             System.out.println("Nome válido");
             utilizadores.add(nome);
         }
+         */
     }
 
 }
