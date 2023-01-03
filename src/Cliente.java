@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Cliente {
     
     //Atributos do cliente:
@@ -10,6 +12,17 @@ public class Cliente {
     private String pais;
     private String informacao_adicional;
     private String pagamento_default;
+    private static ArrayList<Cliente> clientes;
+
+    //Verificar se o nome do cliente está na lista de clientes:
+   public static void verificar_cliente(String cliente) {
+        if (clientes.contains(cliente)) {
+            System.out.println("Cliente válido.");
+        }
+        else {
+            System.out.println("Cliente inválido.");
+        }
+    }
 
     //Construtor:
     public Cliente(String nome, String email, int telefone, int nif, String endereco, String codigo_postal, String pais, String informacao_adicional, String pagamento_default) {
@@ -25,6 +38,15 @@ public class Cliente {
     }
 
     //Getters e Setters:
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
     public String getNome() {
         return nome;
     }
