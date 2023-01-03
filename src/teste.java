@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +12,7 @@ public class teste {
         u.registrar_utilizador();
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         Administrador admin = new Administrador("admin", "password");
         ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
@@ -43,6 +45,7 @@ public class teste {
                             utilizadores.add(utilizador);
                             System.out.println("Utilizador criado com sucesso!");
                             System.out.println(utilizadores);
+                            Escreverficheiros.writeToFile(utilizadores, "Utilizadores.txt");
                         }
 
                     }

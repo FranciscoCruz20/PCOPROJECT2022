@@ -1,5 +1,10 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class Administrador {
 
@@ -18,15 +23,27 @@ public class Administrador {
         return this.username.equals(username) && this.password.equals(password);
     }
 
-    public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) {
+    public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
-            if(utilizador.getNome().equals(nome)) {
-                System.out.println();
-                return true;
+            try {
+                FileReader fr = new FileReader("Utilizadores.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                while ((line = br.readLine()) != null) {
+                    if (line.contains(nome)) {
+                        return true;
+                    }
+                }
+                return false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
             }
         }
         return false;
     }
+
+
 
     /*
     public void validar_admin() {
