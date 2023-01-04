@@ -31,7 +31,7 @@ public class teste {
                 menu_admin();
             }
             if (opcao == 2) {
-                menu_utilizador();
+                menu_utilizador_inicial();
             }
             if (opcao == 3) {
                 break;
@@ -39,7 +39,7 @@ public class teste {
         }
     }
 
-    public static void menu_utilizador_inicial() throws FileNotFoundException {
+    public static void menu_utilizador_inicial() throws IOException {
         Scanner input = new Scanner(System.in);
 
         Utilizador util = new Utilizador("nome","email","");
@@ -47,30 +47,48 @@ public class teste {
 
         while (true) {
             System.out.println("Insira o nome de utilizador e o email:");
+            System.out.print("Nome: ");
             String nome = input.nextLine();
+            System.out.print("Email: ");
             String email = input.nextLine();
             util.verificar_utilizador_confirmar(nome, email);
             if (util.getConfrimacao_email()==false) {
                 System.out.println("1-Confirmar email");
+                System.out.println("2-Sair");
                 int opcao = input.nextInt();
                 input.nextLine();
                 if(opcao == 1) {
                     util.setConfrimacao_email(true);
                     menu_utilizador();
                 }
+                else if(opcao == 2) {
+                    menu_inicial();
+                }
                 else {
                     System.out.println("Opção inválida");
                 }
             }
             else {
-                System.out.println("Validado");
                 menu_utilizador();
 
             }
         }
     }
 
-    public static void menu_utilizador() {
+    public static void menu_utilizador() throws IOException {
+        Scanner input = new Scanner(System.in);
+        while (true) {
+            System.out.println("Menu utilizador:");
+            System.out.println("1-Sair");
+            int opcao = input.nextInt();
+            input.nextLine();
+            if(opcao == 1) {
+                menu_inicial();
+            }
+            else {
+                System.out.println("Opção inválida");
+            }
+        }
     }
 
     //Menu para aceder como administrador:
@@ -82,7 +100,9 @@ public class teste {
 
         while(true) {
             System.out.println("Insira o nome de utilizador e password:");
+            System.out.print("Username: ");
             String username = input.nextLine();
+            System.out.print("Password: ");
             String password = input.nextLine();
 
             if(admin.login(username, password)) {
@@ -97,8 +117,11 @@ public class teste {
 
                     if(opcao == 1) {
                         System.out.println("Insira o nome, email e função do utilizador:");
+                        System.out.print("Nome: ");
                         String nome = input.nextLine();
+                        System.out.print("Email: ");
                         String email = input.nextLine();
+                        System.out.print("Função: ");
                         String funcao = input.nextLine();
 
                         if(admin.verificar_utilizador(utilizadores, nome)) {
@@ -114,6 +137,7 @@ public class teste {
                     }
                     else if(opcao == 2) {
                         System.out.println("Insira o nome do utilizador:");
+                        System.out.print("Nome: ");
                         String nome = input.nextLine();
                         if(admin.verificar_utilizador(utilizadores, nome)) {
                             System.out.println("Válido");

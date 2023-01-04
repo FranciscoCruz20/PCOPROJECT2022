@@ -20,9 +20,9 @@ public class Utilizador {
     //Construtor:
     Utilizador(String nome, String email, String funcao) {
         this.nome = nome;
-        this.email = nome;
+        this.email = email;
         this.funcao = funcao;
-        setConfrimacao_email(false);
+        this.confrimacao_email = false;
     }
 
     public boolean verificar_utilizador_confirmar(String nome, String email) throws FileNotFoundException {
@@ -94,7 +94,6 @@ public class Utilizador {
     }
 
     public String getEmail() {
-
         return email;
     }
 
