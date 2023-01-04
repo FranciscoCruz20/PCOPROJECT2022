@@ -25,6 +25,7 @@ public class Utilizador {
         this.confrimacao_email = false;
     }
 
+    //Verificar se o nome está dentro do ficheiro de utilizadres:
     public boolean verificar_utilizador_confirmar(String nome, String email) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
             try {
@@ -46,10 +47,12 @@ public class Utilizador {
         return false;
     }
 
+    //Método qu emuda o  estado de confirmação do email, que por default é false para true;
     public void confirmar_email() {
         setConfrimacao_email(true);
     }
 
+    //Adicionar clientes a lista;
     public static void adicionar_cliente(Utilizador client) {
         clientes.add(client);
     }
@@ -97,10 +100,12 @@ public class Utilizador {
         return email;
     }
 
+    //Defenir email
+    //Não necessário usar oque está comentado i guess
     public void setEmail() {
-        Scanner t = new Scanner(System.in);
-        System.out.println("Email:");
-        String email = t.next();
+        //Scanner t = new Scanner(System.in);
+        //System.out.println("Email:");
+        //String email = t.next();
         this.email = email;
     }
 

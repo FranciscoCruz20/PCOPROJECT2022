@@ -3,10 +3,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+//Classe dedicada a ficheiros:
 public class Escreverficheiros {
 
-
-
+    //Escreve no ficheiro selecionado a lista de utilizadores criados;
     public static void writeToFile(ArrayList<Utilizador> utilizadores, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Utilizadores.txt");
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -18,6 +18,7 @@ public class Escreverficheiros {
         }
     }
 
+    //Escreve no ficheiro selecionado a lista de clientes criados;
     public static void writeToFilecliente(ArrayList<Cliente> clientes, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Clientes.txt");
              PrintWriter printWriter = new PrintWriter(fileWriter)) {

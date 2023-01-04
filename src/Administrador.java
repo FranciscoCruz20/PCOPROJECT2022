@@ -11,24 +11,29 @@ public class Administrador {
     //Atributos
     private String username;
     private String password;
-    private ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+    private ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();//Lista de utilizadores criados;
 
     //Construtor:
     public Administrador(String admin, String password) {
+        //Atributos com valores default, unicos valores de acesso ao modo admin;
         this.username = "admin";
         this.password = "12345";
     }
 
+    //Verificação dos valores dos atributos de administrador, comparação dos inputs com os valores do construtor;
     public boolean login(String username, String password) {
         return this.username.equals(username) && this.password.equals(password);
     }
 
+    //verificar a existência do nome inserido na lista de utilizadores no ficheiro txt;
     public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
             try {
+                //Leitura do ficheiro;
                 FileReader fr = new FileReader("Utilizadores.txt");
                 BufferedReader br = new BufferedReader(fr);
                 String line;
+                //Verificação em linha;
                 while ((line = br.readLine()) != null) {
                     if (line.contains(nome)) {
                         return true;
@@ -45,7 +50,6 @@ public class Administrador {
 
     //Getters e setters:
     public String getUsername() {
-
         return username;
     }
 
@@ -60,6 +64,9 @@ public class Administrador {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    //Antigas funções usadas(em príncipio não serão usadas mais, mas NÃO APAGAR);
 
     /*
     public void validar_admin() {

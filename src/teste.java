@@ -5,13 +5,6 @@ import java.util.Scanner;
 
 public class teste {
 
-    /*
-    public static void main(String[] args) {
-        menu();
-        Utilizador u = new Utilizador();
-        u.registrar_utilizador();
-     */
-
     public static void main(String[] args) throws IOException {
         menu_inicial();
     }
@@ -40,8 +33,8 @@ public class teste {
     }
 
     public static void menu_utilizador_inicial() throws IOException {
+        //Inputs:
         Scanner input = new Scanner(System.in);
-
         Utilizador util = new Utilizador("nome","email","");
         ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
@@ -140,11 +133,11 @@ public class teste {
                         System.out.print("Nome: ");
                         String nome = input.nextLine();
                         if(admin.verificar_utilizador(utilizadores, nome)) {
-                            System.out.println("Válido");
-                            System.out.println(utilizadores);
+                            System.out.println("Existe um utilizador com este nome");
+                            System.out.println(nome);
 
                         } else {
-                            System.out.println("Inválido");
+                            System.out.println("Não existe nenhum utilizador com este nome");
                         }
 
                     }
@@ -159,27 +152,9 @@ public class teste {
                 System.out.println("Username ou password incorretos");
             }
         }
-
     }
-
-
 }
 
-
-
-    /*
-    public static void menu() {
-        System.out.println("Menu inicial:");
-        System.out.println("1-Validar admin");
-        Scanner t = new Scanner(System.in);
-        System.out.println("Opção:");
-        int opcao = t.nextInt();
-        if (opcao==1) {
-            Administrador a = new Administrador();
-            a.validar_admin();
-        }
-    }
-    */
 
 
 

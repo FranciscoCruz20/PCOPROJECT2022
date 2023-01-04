@@ -15,6 +15,7 @@ public class Pool {
     private Cliente cliente;
     private int licencas_usadas;
 
+    //Construtor:
     public Pool(int max_licencas, Date data_criacao, Date validade, String estado,int licencas_disp, boolean estado_pagamento, boolean renovacao, float preco,Cliente cliente, List licencas, int licencas_usadas) {
         this.max_licencas = 0;
         this.data_criacao = data_criacao;
@@ -117,7 +118,7 @@ public class Pool {
         return preco;
     }
 
-    //Preço da pool é o preço de uma licença x o número máximo de licenças
+    //Preço da pool é o preço de uma licença X o número máximo de licenças
     public void setPreco(int max_licencas) {
         this.preco = max_licencas*100;
     }

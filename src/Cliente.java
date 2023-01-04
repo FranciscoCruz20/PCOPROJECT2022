@@ -12,10 +12,11 @@ public class Cliente {
     private String pais;
     private String informacao_adicional;
     private String pagamento_default;
-    private Utilizador gestor;
-    private static ArrayList<Cliente> clientes;
+    private Utilizador gestor;//Gestor corrresponde ao nome do utilizador responsável por este cliente;
+    private static ArrayList<Cliente> clientes;//Lista de clientes criados;
 
-    //Verificar se o nome do cliente está na lista de clientes:
+
+   //Verificar se o nome do cliente está na lista de clientes:
    public static void verificar_cliente(String cliente) {
         if (clientes.contains(cliente)) {
             System.out.println("Cliente válido.");
@@ -38,9 +39,8 @@ public class Cliente {
         this.pagamento_default = pagamento_default;
     }
 
+
     //Getters e Setters:
-
-
     public Utilizador getGestor() {
         return gestor;
     }
