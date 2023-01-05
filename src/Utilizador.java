@@ -14,6 +14,7 @@ public class Utilizador {
     private String cliente;
     private String funcao;
     private boolean confrimacao_email;
+    private String password;
     private static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
     private static ArrayList<Utilizador> clientes = new ArrayList<>();
 
@@ -26,15 +27,18 @@ public class Utilizador {
     }
 
     //Verificar se o nome está dentro do ficheiro de utilizadres:
-    public boolean verificar_utilizador_confirmar(String nome, String email) throws FileNotFoundException {
+    public boolean verificar_utilizador_confirmar(ArrayList<Utilizador> utilizadores, String nome, String email) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
             try {
                 FileReader fr = new FileReader("Utilizadores.txt");
                 BufferedReader br = new BufferedReader(fr);
                 String line;
+                //Verificação em linha:
                 while ((line = br.readLine()) != null) {
-                    if (line.contains(nome)&&line.contains(email)) {
-                        return true;
+                    if (line.contains(nome)) {
+                        if (line.contains(email)) {
+                            return true;
+                        }
                     }
                 }
                 return false;

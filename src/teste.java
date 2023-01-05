@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class teste {
+    static Utilizador util = new Utilizador("nome","email","");
+    static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+    static Administrador admin = new Administrador("admin", "password");
 
     public static void main(String[] args) throws IOException {
+        Utilizador util = new Utilizador("nome","email","");
+        Administrador admin = new Administrador("admin", "password");
         menu_inicial();
     }
 
@@ -35,8 +40,8 @@ public class teste {
     public static void menu_utilizador_inicial() throws IOException {
         //Inputs:
         Scanner input = new Scanner(System.in);
-        Utilizador util = new Utilizador("nome","email","");
-        ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+        //Utilizador util = new Utilizador("nome","email","");
+        //ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
         while (true) {
             System.out.println("Insira o nome de utilizador e o email:");
@@ -44,25 +49,29 @@ public class teste {
             String nome = input.nextLine();
             System.out.print("Email: ");
             String email = input.nextLine();
-            util.verificar_utilizador_confirmar(nome, email);
-            if (util.getConfrimacao_email()==false) {
-                System.out.println("1-Confirmar email");
-                System.out.println("2-Sair");
-                int opcao = input.nextInt();
-                input.nextLine();
-                if(opcao == 1) {
-                    util.setConfrimacao_email(true);
-                    menu_utilizador();
-                }
-                else if(opcao == 2) {
-                    menu_inicial();
+            if (util.verificar_utilizador_confirmar(utilizadores, nome, email)) {
+                if (util.getConfrimacao_email()==false) {
+                    System.out.println("1-Confirmar email");
+                    System.out.println("2-Sair");
+                    int opcao = input.nextInt();
+                    input.nextLine();
+                    if (opcao == 1) {
+                        util.setConfrimacao_email(true);
+                        menu_utilizador();
+                    } else if (opcao == 2) {
+                        menu_inicial();
+                    } else {
+                        System.out.println("Opção inválida");
+                    }
                 }
                 else {
-                    System.out.println("Opção inválida");
+                    System.out.println("Email confirmado");
+                    menu_utilizador();
                 }
             }
             else {
-                menu_utilizador();
+                System.out.println("Não existe utilizador com esse nome ou email");
+                menu_inicial();
 
             }
         }
@@ -86,10 +95,10 @@ public class teste {
 
     //Menu para aceder como administrador:
     public static void menu_admin() throws IOException{
-        Scanner input = new Scanner(System.in);
 
-        Administrador admin = new Administrador("admin", "password");
-        ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+        Scanner input = new Scanner(System.in);
+        //Administrador admin = new Administrador("admin", "password");
+        //ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
         while(true) {
             System.out.println("Insira o nome de utilizador e password:");

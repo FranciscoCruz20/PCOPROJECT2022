@@ -33,7 +33,7 @@ public class Administrador {
                 FileReader fr = new FileReader("Utilizadores.txt");
                 BufferedReader br = new BufferedReader(fr);
                 String line;
-                //Verificação em linha;
+                //Verificação em linha:
                 while ((line = br.readLine()) != null) {
                     if (line.contains(nome)) {
                         return true;
