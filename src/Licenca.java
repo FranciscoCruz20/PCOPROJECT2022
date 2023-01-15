@@ -35,6 +35,18 @@ public class Licenca {
         System.out.println("Data de criação: "+ data_criacao.toString());
     }
 
+    public void criar_licenca() {
+
+    }
+
+    public void dados_licenca(Date validade, UtilizadorTMA utilizadortma, Cliente cliente) {
+
+    }
+
+    public void confirmar_licenca() {
+
+    }
+
     //Getters e Setters:
     public Cliente getCliente() {
         return cliente;

@@ -1,8 +1,6 @@
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -25,6 +23,7 @@ public class Administrador {
         return this.username.equals(username) && this.password.equals(password);
     }
 
+    /*
     //verificar a existência do nome inserido na lista de utilizadores no ficheiro txt;
     public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
@@ -47,6 +46,8 @@ public class Administrador {
         }
         return false;
     }
+
+     */
 
     //Getters e setters:
     public String getUsername() {

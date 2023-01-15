@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Utilizador {
 
@@ -15,7 +14,7 @@ public class Utilizador {
     private String funcao;
     private boolean confrimacao_email;
     private String password;
-    private static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+    private static ArrayList<String> utilizadores = new ArrayList<String>();
     private static ArrayList<Utilizador> clientes = new ArrayList<>();
 
     //Construtor:
@@ -26,6 +25,30 @@ public class Utilizador {
         this.confrimacao_email = false;
         this.password = password;
     }
+
+    //verificar a existência do nome inserido na lista de utilizadores no ficheiro txt;
+    public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
+        for(Utilizador utilizador : utilizadores) {
+            try {
+                //Leitura do ficheiro;
+                FileReader fr = new FileReader("Utilizadores.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                //Verificação em linha:
+                while ((line = br.readLine()) != null) {
+                    if (line.contains(nome)) {
+                        return true;
+                    }
+                }
+                return false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
+    }
+
 
     //Verificar se o nome está dentro do ficheiro de utilizadres:
     public boolean verificar_utilizador_confirmar(ArrayList<Utilizador> utilizadores, String nome, String email) throws FileNotFoundException {
@@ -52,10 +75,6 @@ public class Utilizador {
         return false;
     }
 
-    public void inserir_password() {
-
-    }
-
     //Método que muda o  estado de confirmação do email, que por default é false para true;
     public void confirmar_email() {
         setConfrimacao_email(true);
@@ -73,7 +92,7 @@ public class Utilizador {
     }
 
     public void setPassword(String password) {
-
+        this.password = password;
     }
 
     public boolean getConfrimacao_email() {
