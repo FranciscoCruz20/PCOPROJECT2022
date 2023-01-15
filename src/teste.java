@@ -4,23 +4,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class teste {
-    static Utilizador util = new Utilizador("nome","email","");
+    static Utilizador util = new Utilizador("nome","email","", "");
     static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
     static Administrador admin = new Administrador("admin", "password");
 
+
+    //Main:
+    //Para aceder como admin:
+    //Username: admin
+    //Password: 12345
     public static void main(String[] args) throws IOException {
-        Utilizador util = new Utilizador("nome","email","");
+        Utilizador util = new Utilizador("nome","email","","");
         Administrador admin = new Administrador("admin", "password");
         menu_inicial();
     }
 
+    //Primeiro menu apresentado, com acesso ao menu de administrador(com verificação implementada), confirmação de email de utilizador(com verificação do email), menu de utilizador(com verificação de nome e password):
     public static void menu_inicial() throws IOException {
         Scanner input = new Scanner(System.in);
         while (true) {
             System.out.println("Menu:");
             System.out.println("1 - Menu de administrador");
-            System.out.println("2 - Menu de utilizador");
-            System.out.println("3 - Sair");
+            System.out.println("2 - Confirmação email");
+            System.out.println("3 - Menu de utilizador");
+            System.out.println("4 - Sair");
 
             int opcao = input.nextInt();
             input.nextLine();
@@ -29,20 +36,23 @@ public class teste {
                 menu_admin();
             }
             if (opcao == 2) {
-                menu_utilizador_inicial();
+                menu_confirmacao_inicial();
             }
             if (opcao == 3) {
+                menu_confirmacao_utilizador();
+            }
+            if (opcao == 4) {
                 break;
+            }
+            else {
+                System.out.println("Opção inválida");
             }
         }
     }
 
-    public static void menu_utilizador_inicial() throws IOException {
+    public static void menu_confirmacao_inicial() throws IOException {
         //Inputs:
         Scanner input = new Scanner(System.in);
-        //Utilizador util = new Utilizador("nome","email","");
-        //ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
-
         while (true) {
             System.out.println("Insira o nome de utilizador e o email:");
             System.out.print("Nome: ");
@@ -57,6 +67,9 @@ public class teste {
                     input.nextLine();
                     if (opcao == 1) {
                         util.setConfrimacao_email(true);
+                        System.out.println("Insira a sua nova password:");
+                        String password = input.nextLine();
+                        util.setPassword(password);
                         menu_utilizador();
                     } else if (opcao == 2) {
                         menu_inicial();
@@ -66,7 +79,7 @@ public class teste {
                 }
                 else {
                     System.out.println("Email confirmado");
-                    menu_utilizador();
+                    menu_inicial();
                 }
             }
             else {
@@ -76,6 +89,25 @@ public class teste {
             }
         }
     }
+
+    public static void menu_confirmacao_utilizador() throws IOException {
+
+        Scanner input = new Scanner(System.in);
+        while (true) {
+            System.out.println("Insira o nome de utilizador e a sua password:");
+            System.out.print("Nome: ");
+            String nome = input.nextLine();
+            System.out.print("Password: ");
+            String password = input.nextLine();
+            if (util.verificar_utilizador_confirmar(utilizadores, nome, password)) {
+                menu_utilizador();
+            } else {
+                System.out.println("Não existe utilizador com esse nome ou password");
+                menu_inicial();
+            }
+        }
+    }
+
 
     public static void menu_utilizador() throws IOException {
         Scanner input = new Scanner(System.in);
@@ -97,8 +129,6 @@ public class teste {
     public static void menu_admin() throws IOException{
 
         Scanner input = new Scanner(System.in);
-        //Administrador admin = new Administrador("admin", "password");
-        //ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
         while(true) {
             System.out.println("Insira o nome de utilizador e password:");
@@ -129,7 +159,7 @@ public class teste {
                         if(admin.verificar_utilizador(utilizadores, nome)) {
                             System.out.println("Utilizador com esse nome já existe");
                         } else {
-                            Utilizador utilizador = new Utilizador(nome, email, funcao);
+                            Utilizador utilizador = new Utilizador(nome, email, funcao, password);
                             utilizadores.add(utilizador);
                             System.out.println("Utilizador criado com sucesso!");
                             System.out.println(utilizadores);

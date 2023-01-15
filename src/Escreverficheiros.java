@@ -11,7 +11,7 @@ public class Escreverficheiros {
         try (FileWriter fileWriter = new FileWriter("Utilizadores.txt");
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Utilizador utilizador : utilizadores) {
-                printWriter.println("Nome: " +utilizador.getNome() + ", Email: " + utilizador.getEmail() + ", Função: " + utilizador.getFuncao() + "\n");
+                printWriter.println("Nome: " +utilizador.getNome() + ", Email: " + utilizador.getEmail() + ", Função: " + utilizador.getFuncao() + ", Password: " + utilizador.getPassword() + "\n");
             }
         } catch (Exception e) {
             e.printStackTrace();

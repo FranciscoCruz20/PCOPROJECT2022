@@ -19,11 +19,12 @@ public class Utilizador {
     private static ArrayList<Utilizador> clientes = new ArrayList<>();
 
     //Construtor:
-    Utilizador(String nome, String email, String funcao) {
+    Utilizador(String nome, String email, String funcao, String password) {
         this.nome = nome;
         this.email = email;
         this.funcao = funcao;
         this.confrimacao_email = false;
+        this.password = password;
     }
 
     //Verificar se o nome está dentro do ficheiro de utilizadres:
@@ -51,7 +52,11 @@ public class Utilizador {
         return false;
     }
 
-    //Método qu emuda o  estado de confirmação do email, que por default é false para true;
+    public void inserir_password() {
+
+    }
+
+    //Método que muda o  estado de confirmação do email, que por default é false para true;
     public void confirmar_email() {
         setConfrimacao_email(true);
     }
@@ -62,6 +67,15 @@ public class Utilizador {
     }
 
     //Getters e setters:
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+
+    }
+
     public boolean getConfrimacao_email() {
         return confrimacao_email;
     }
@@ -71,32 +85,26 @@ public class Utilizador {
     }
 
     public static List<Utilizador> getClientes() {
-
         return clientes;
     }
 
     public static void setClientes(List<Utilizador> clientes) {
-
         Utilizador.clientes = (ArrayList<Utilizador>) clientes;
     }
 
     public String getFuncao() {
-
         return funcao;
     }
 
     public void setFuncao(String funcao) {
-
         this.funcao = funcao;
     }
 
     public String getCliente() {
-
         return cliente;
     }
 
     public void setCliente(String cliente) {
-
         this.cliente = cliente;
     }
 
@@ -104,71 +112,16 @@ public class Utilizador {
         return email;
     }
 
-    //Defenir email
-    //Não necessário usar oque está comentado i guess
     public void setEmail() {
-        //Scanner t = new Scanner(System.in);
-        //System.out.println("Email:");
-        //String email = t.next();
         this.email = email;
     }
 
     public String getNome() {
-
         return nome;
     }
 
     public void setNome() {
-        /*
-        Scanner t = new Scanner(System.in);
-        System.out.println("Nome:");
-        String nome = t.next();
-        if (utilizadores.contains(nome)) {
-            System.out.println("Nome já existente.Volte a tentar");
-            setNome();
-        }
-        else {
-            System.out.println("Nome válido");
-            utilizadores.add(nome);
-        }
-         */
     }
-
-    /*
-    //Registrar novo utilizador:
-    public void registrar_utilizador() {
-        setNome();
-        setEmail();
-        Scanner t = new Scanner(System.in);
-        System.out.println("Cliente:");
-        String cliente = t.next();
-        Cliente.verificar_cliente(cliente);
-        setCliente(cliente);
-
-        System.out.println(getNome() + getEmail() + getCliente());
-
-    }
-     */
-
-        /*
-        Scanner t = new Scanner(System.in);
-        System.out.println("Username:");
-        String campo1 = t.next();
-        System.out.println("Password:");
-        String campo2 = t.next();
-        //Usado o equals em vez de == porque assim ele compara o conteudo e não o objeto, comparar objetos diferentes com == vai dar smp erro
-        if (getUsername().equals(campo1)) {
-            if (getPassword().equals(campo2)) {
-                System.out.println("Validado com sucesso");
-            }
-        }
-        else {
-            System.out.println("Dados errados, volte a tentar.");
-            validar_admin();
-        }
-
-         */
-
 }
 
 
