@@ -1,4 +1,11 @@
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 
 public class Licenca {
 
@@ -11,6 +18,9 @@ public class Licenca {
     private boolean renovacao;
     private float preco;
     private Cliente cliente;
+    private ArrayList<Licenca> licencas = new ArrayList<>();
+    private ArrayList<Utilizador> utilizadorestma = new ArrayList<Utilizador>();
+
 
     //Construtor:
     public Licenca(Date data_criacao,String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente) {
@@ -35,9 +45,38 @@ public class Licenca {
         System.out.println("Data de criação: "+ data_criacao.toString());
     }
 
-    public void criar_licenca() {
+    public void criar_licenca() throws FileNotFoundException {
 
-    }
+        Scanner input = new Scanner(System.in);
+        System.out.println("Introduza os dados da licença");
+        System.out.println("Validade(ano-mês-dia):");
+        try {
+            String validade = input.nextLine();
+
+            // Using parse method to convert the string to LocalDate object
+            LocalDate date = LocalDate.parse(validade, DateTimeFormatter.ISO_DATE);
+
+            // Printing the date object
+            System.out.println(date);
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("Exception: " + e);
+        }
+        catch (DateTimeParseException e) {
+            System.out.println("Exception: " + e);
+        }
+        System.out.println("Utilizador TMA:");
+        String utilizadortma = input.nextLine();
+        if (UtilizadorTMA.verificar_utilizador(utilizadorestma,utilizadortma)) {
+            System.out.println("Cliente:");
+            String cliente = input.nextLine();
+            if (Cliente.verificar_cliente(cliente)==true) {
+                System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente());
+                confirmar_licenca();
+                }
+            }
+
+        }
 
     public void dados_licenca(Date validade, UtilizadorTMA utilizadortma, Cliente cliente) {
 

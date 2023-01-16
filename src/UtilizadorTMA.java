@@ -1,6 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class UtilizadorTMA {
+public class UtilizadorTMA extends Utilizador{
 
     //Atributos:
     private String username;
@@ -10,9 +15,11 @@ public class UtilizadorTMA {
     private Date data_criacao;
     private Date data_ultima_alteracao;
     private String estado;
+    private ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<>();
 
     //Construtor:
-    public UtilizadorTMA(String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado) {
+    public UtilizadorTMA(String nome, String email, String funcao, String password, String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado) {
+        super(nome, email, funcao, password);
         this.username = username;
         this.pcc = pcc;
         this.hcmid = hcmid;
@@ -31,6 +38,28 @@ public class UtilizadorTMA {
     public  void data_criacao() {
         Date data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
+    }
+
+    public static boolean verificar_utilizadortma(ArrayList<UtilizadorTMA> utilizadorestma, String nome) throws FileNotFoundException {
+        for(UtilizadorTMA utilizadortma : utilizadorestma) {
+            try {
+                //Leitura do ficheiro;
+                FileReader fr = new FileReader("UtilizadoresTMA.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                //Verificação em linha:
+                while ((line = br.readLine()) != null) {
+                    if (line.contains(nome)) {
+                        return true;
+                    }
+                }
+                return false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
     }
 
     //Getters e Setters:

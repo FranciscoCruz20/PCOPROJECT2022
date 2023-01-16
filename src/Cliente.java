@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Cliente {
@@ -17,14 +21,16 @@ public class Cliente {
 
 
    //Verificar se o nome do cliente está na lista de clientes:
-   public static void verificar_cliente(String cliente) {
+   public static boolean verificar_cliente(String cliente) {
         if (clientes.contains(cliente)) {
             System.out.println("Cliente válido.");
+            return true;
         }
         else {
             System.out.println("Cliente inválido.");
+            return false;
         }
-    }
+   }
 
     //Construtor:
     public Cliente(String nome, String email, int telefone, int nif, String endereco, String codigo_postal, String pais, String informacao_adicional, String pagamento_default) {
@@ -39,6 +45,28 @@ public class Cliente {
         this.pagamento_default = pagamento_default;
     }
 
+
+    public static boolean verificar_cliente(ArrayList<Cliente> clientes, String nome) throws FileNotFoundException {
+        for(Cliente cliente : clientes) {
+            try {
+                //Leitura do ficheiro;
+                FileReader fr = new FileReader("Clientes.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                //Verificação em linha:
+                while ((line = br.readLine()) != null) {
+                    if (line.contains(nome)) {
+                        return true;
+                    }
+                }
+                return false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
+    }
 
     //Getters e Setters:
     public Utilizador getGestor() {

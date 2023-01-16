@@ -202,7 +202,8 @@ public class Main {
         while (true) {
 
             System.out.println("Menu utilizador:");
-            System.out.println("1-Sair");
+            System.out.println("1-Criar licença");
+            System.out.println("2-Sair");
             int opcao = input.nextInt();
             input.nextLine();
 

@@ -27,7 +27,7 @@ public class Utilizador {
     }
 
     //verificar a existência do nome inserido na lista de utilizadores no ficheiro txt;
-    public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
+    public static boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
             try {
                 //Leitura do ficheiro;
@@ -51,7 +51,7 @@ public class Utilizador {
 
 
     //Verificar se o nome está dentro do ficheiro de utilizadres:
-    public boolean verificar_utilizador_confirmar(ArrayList<Utilizador> utilizadores, String nome, String email) throws FileNotFoundException {
+    public static boolean verificar_utilizador_confirmar(ArrayList<Utilizador> utilizadores, String nome, String email) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
             try {
                 FileReader fr = new FileReader("Utilizadores.txt");
