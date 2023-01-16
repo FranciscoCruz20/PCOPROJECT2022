@@ -16,9 +16,10 @@ public class UtilizadorTMA extends Utilizador{
     private Date data_ultima_alteracao;
     private String estado;
     private ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<>();
+    private ArrayList<Licenca> licencas = new ArrayList<>();
 
     //Construtor:
-    public UtilizadorTMA(String nome, String email, String funcao, String password, String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado) {
+    public UtilizadorTMA(String nome, String email, String funcao, String password, String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado,ArrayList licencas) {
         super(nome, email, funcao, password);
         this.username = username;
         this.pcc = pcc;
@@ -27,6 +28,7 @@ public class UtilizadorTMA extends Utilizador{
         this.data_criacao = data_criacao;
         this.data_ultima_alteracao = data_ultima_alteracao;
         this.estado = "Inativo";
+        this.licencas = licencas;
     }
 
     //Metodos para obter data do sistema:
@@ -62,7 +64,38 @@ public class UtilizadorTMA extends Utilizador{
         return false;
     }
 
+    public static boolean verificar_licencas(ArrayList<Utilizador> utilizadorestma, ArrayList licencas) throws FileNotFoundException {
+        for(Utilizador utilizadortma : utilizadorestma) {
+            try {
+                //Leitura do ficheiro;
+                FileReader fr = new FileReader("UtilizadoresTMA.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                //Verificação em linha:
+                while ((line = br.readLine()) != null) {
+                    if (line.contains((CharSequence) licencas)) {
+                        return true;
+                    }
+                }
+                return false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
+    }
+
     //Getters e Setters:
+
+    public ArrayList<UtilizadorTMA> getUtilizadorestma() {
+        return utilizadorestma;
+    }
+
+    public void setUtilizadorestma(ArrayList<UtilizadorTMA> utilizadorestma) {
+        this.utilizadorestma = utilizadorestma;
+    }
+
     public String getUsername() {
         return username;
     }

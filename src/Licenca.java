@@ -30,7 +30,7 @@ public class Licenca {
         this.utilizadortma = utilizadortma;
         this.pagamento = false;
         this.renovacao = false;
-        this.preco = preco;
+        this.preco = 150.50f;
         this.cliente = cliente;
     }
 
@@ -67,16 +67,24 @@ public class Licenca {
         }
         System.out.println("Utilizador TMA:");
         String utilizadortma = input.nextLine();
-        if (UtilizadorTMA.verificar_utilizador(utilizadorestma,utilizadortma)) {
-            System.out.println("Cliente:");
-            String cliente = input.nextLine();
-            if (Cliente.verificar_cliente(cliente)==true) {
-                System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente());
-                confirmar_licenca();
+        if (UtilizadorTMA.verificar_utilizador(utilizadorestma, utilizadortma)) {
+            if (UtilizadorTMA.verificar_licencas(utilizadorestma, licencas)){
+                System.out.println("Cliente:");
+                String cliente = input.nextLine();
+                if (Cliente.verificar_cliente(cliente) == true) {
+                    data_criacao();
+                    System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
+
+                    confirmar_licenca();
+                } else {
+                    System.out.println("Dados inseridos incorretos");
                 }
             }
-
+            }
+        else {
+            System.out.println("Dados inseridos incorretos");
         }
+    }
 
     public void dados_licenca(Date validade, UtilizadorTMA utilizadortma, Cliente cliente) {
 
@@ -103,7 +111,7 @@ public class Licenca {
         this.preco = preco;
     }
 
-    public boolean isRenovacao() {
+    public boolean getRenovacao() {
         return renovacao;
     }
 
@@ -111,7 +119,7 @@ public class Licenca {
         this.renovacao = renovacao;
     }
 
-    public boolean isPagamento() {
+    public boolean getPagamento() {
         return pagamento;
     }
 

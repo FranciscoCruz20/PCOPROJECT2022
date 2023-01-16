@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static Utilizador util = new Utilizador("nome", "email", "", "");
@@ -14,6 +13,9 @@ public class Main {
     //Username: admin
     //Password: 12345
     public static void main(String[] args) throws IOException {
+
+
+
         Utilizador util = new Utilizador("nome", "email", "", "");
         Administrador admin = new Administrador("admin", "password");
         menu_inicial();
