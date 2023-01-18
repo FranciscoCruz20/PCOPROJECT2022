@@ -6,6 +6,7 @@ public class Main {
     static Utilizador util = new Utilizador("nome", "email", "", "");
     static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
     static Administrador admin = new Administrador("admin", "password");
+    static Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null,null);
 
 
     //Main:
@@ -210,11 +211,10 @@ public class Main {
             input.nextLine();
 
             if (opcao == 1) {
-
-                menu_inicial();
+                lic.criar_licenca();
             }
             else if (opcao == 2){
-
+                menu_inicial();
             }
             else {
 

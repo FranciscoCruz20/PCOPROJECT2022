@@ -6,18 +6,18 @@ public class Pool {
 
     //Atributos:
     private String nome;
-    private int max_licencas;
+    private static int max_licencas;
     private Date data_criacao;
     private Date validade;
     private String estado;
-    private int licencas_disp;
+    private static int licencas_disp;
     private boolean estado_pagamento;
     private boolean renovacao;
     private float preco;
     private Cliente cliente;
-    private Licenca licenca;
-    private int licencas_usadas;
-    private ArrayList<Licenca> licencas = new ArrayList<>();
+    private static Licenca licenca;
+    private static int licencas_usadas;
+    private static ArrayList<Licenca> licencas = new ArrayList<>();
     private static ArrayList<Pool> pools = new ArrayList<>();
 
     //Construtor:
@@ -36,18 +36,27 @@ public class Pool {
 
     }
 
-    public static void escolher_pool(String pool) {
-        System.out.println(getPools());
-        //Selecionar pool
-
-
-
+    public static void confirmar_pool_licenca() {
+        adicionar_licenca_pool(licenca);
+        setLicencas_disp(licencas_disp--);
+        setLicencas_usadas(licencas_usadas++);
     }
 
-    public void adicionar_licenca_pool(Licenca licenca) {
+    public static void escolher_pool(String pool) {
+        //Selecionar pool
+        if (pools.contains(pool)) {
+            if (licencas_usadas < max_licencas ) {
+                confirmar_pool_licenca();
+            }
+            else {
+                System.out.println("Pool cheia");
+            }
+        }
+    }
+
+    public static void adicionar_licenca_pool(Licenca licenca) {
         licencas.add(licenca);
         Escreverficheiros.writeToFileLicanca(licencas, "Licenças.txt");
-
     }
 
     //Metodos para obter data do sistema:
@@ -63,6 +72,16 @@ public class Pool {
 
 
     //Getters e Setters:
+
+
+    public static int getLicencas_usadas() {
+        return licencas_usadas;
+    }
+
+    public static void setLicencas_usadas(int licencas_usadas) {
+        Pool.licencas_usadas = licencas_usadas;
+    }
+
     public int getMax_licencas() {
 
         return max_licencas;
@@ -103,14 +122,14 @@ public class Pool {
         this.estado = estado;
     }
 
-    public int getLicencas_disp() {
+    public static int getLicencas_disp() {
 
         return licencas_disp;
     }
 
-    public void setLicencas_disp(int licencas_disp) {
+    public static void setLicencas_disp(int licencas_disp) {
 
-        this.licencas_disp = licencas_disp;
+        Pool.licencas_disp = licencas_disp;
     }
 
     public boolean getEstado_pagamento() {

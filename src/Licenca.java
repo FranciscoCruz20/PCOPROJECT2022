@@ -10,17 +10,17 @@ import java.time.format.DateTimeParseException;
 public class Licenca {
 
     //Atributos:
-    private Date data_criacao;
-    private String estado;
-    private Date validade;
-    private  UtilizadorTMA utilizadortma;
-    private boolean pagamento;
-    private boolean renovacao;
-    private float preco;
-    private Cliente cliente;
-    private Pool pool;
-    private ArrayList<Licenca> licencas = new ArrayList<>();
-    private ArrayList<Utilizador> utilizadorestma = new ArrayList<Utilizador>();
+    private static Date data_criacao;
+    private static String estado;
+    private static Date validade;
+    private static UtilizadorTMA utilizadortma;
+    private static boolean pagamento;
+    private static boolean renovacao;
+    private static float preco;
+    private static Cliente cliente;
+    private static Pool pool;
+    private static ArrayList<Licenca> licencas = new ArrayList<>();
+    private static ArrayList<Utilizador> utilizadorestma = new ArrayList<Utilizador>();
 
 
     //Construtor:
@@ -42,7 +42,7 @@ public class Licenca {
         System.out.println("A hora do sitema é "+ data.toString());
     }
 
-    public  void data_criacao() {
+    public static void data_criacao() {
         Date data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
     }
@@ -79,9 +79,11 @@ public class Licenca {
                     System.out.println("1-Confirmar licença");
                     int opcao =  input.nextInt();
                     if (opcao == 1) {
+                        System.out.println("Escolha a pool onde deseja colocar a nova licença");
                         String pool = input.nextLine();
+                        Pool.getPools();
                         Pool.escolher_pool(pool);
-                        confirmar_licenca();
+                        System.out.println(toString());
                     }
                     else {
                         System.out.println("Opção inválida");
@@ -105,7 +107,7 @@ public class Licenca {
     }
 
     //Getters e Setters:
-    public Cliente getCliente() {
+    public static Cliente getCliente() {
         return cliente;
     }
 
@@ -113,7 +115,7 @@ public class Licenca {
         this.cliente = cliente;
     }
 
-    public float getPreco() {
+    public static float getPreco() {
         return preco;
     }
 
@@ -121,7 +123,7 @@ public class Licenca {
         this.preco = preco;
     }
 
-    public boolean getRenovacao() {
+    public static boolean getRenovacao() {
         return renovacao;
     }
 
@@ -129,7 +131,7 @@ public class Licenca {
         this.renovacao = renovacao;
     }
 
-    public boolean getPagamento() {
+    public static boolean getPagamento() {
         return pagamento;
     }
 
@@ -137,7 +139,7 @@ public class Licenca {
         this.pagamento = pagamento;
     }
 
-    public UtilizadorTMA getUtilizadortma() {
+    public static UtilizadorTMA getUtilizadortma() {
         return utilizadortma;
     }
 
@@ -145,7 +147,7 @@ public class Licenca {
         this.utilizadortma = utilizadortma;
     }
 
-    public Date getValidade() {
+    public static Date getValidade() {
         return validade;
     }
 
@@ -153,7 +155,7 @@ public class Licenca {
         this.validade = validade;
     }
 
-    public String getEstado() {
+    public static String getEstado() {
         return estado;
     }
 
@@ -161,11 +163,25 @@ public class Licenca {
         this.estado = estado;
     }
 
-    public Date getData_criacao() {
+    public static Date getData_criacao() {
         return data_criacao;
     }
 
     public void setData_criacao(Date data_criacao) {
         this.data_criacao = data_criacao;
+    }
+
+    public String toString() {
+        return "Licenca{" +
+                "data_criacao=" + data_criacao +
+                ", estado='" + estado + '\'' +
+                ", validade=" + validade +
+                ", utilizadortma=" + utilizadortma +
+                ", pagamento=" + pagamento +
+                ", renovacao=" + renovacao +
+                ", preco=" + preco +
+                ", cliente=" + cliente +
+                ", pool=" + pool +
+                '}';
     }
 }
