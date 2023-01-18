@@ -18,20 +18,22 @@ public class Licenca {
     private boolean renovacao;
     private float preco;
     private Cliente cliente;
+    private Pool pool;
     private ArrayList<Licenca> licencas = new ArrayList<>();
     private ArrayList<Utilizador> utilizadorestma = new ArrayList<Utilizador>();
 
 
     //Construtor:
-    public Licenca(Date data_criacao,String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente) {
+    public Licenca(Date data_criacao,String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente, Pool pool) {
         this.data_criacao = data_criacao;
         this.estado = "Inativa";
         this.validade = validade;
         this.utilizadortma = utilizadortma;
         this.pagamento = false;
         this.renovacao = false;
-        this.preco = 150.50f;
+        this.preco = 100;
         this.cliente = cliente;
+        this.pool = pool;
     }
 
     //Metodos para obter data do sistema:
@@ -74,8 +76,16 @@ public class Licenca {
                 if (Cliente.verificar_cliente(cliente) == true) {
                     data_criacao();
                     System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
-
-                    confirmar_licenca();
+                    System.out.println("1-Confirmar licença");
+                    int opcao =  input.nextInt();
+                    if (opcao == 1) {
+                        String pool = input.nextLine();
+                        Pool.escolher_pool(pool);
+                        confirmar_licenca();
+                    }
+                    else {
+                        System.out.println("Opção inválida");
+                    }
                 } else {
                     System.out.println("Dados inseridos incorretos");
                 }

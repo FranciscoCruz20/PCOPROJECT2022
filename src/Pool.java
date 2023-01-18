@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Pool {
 
     //Atributos:
+    private String nome;
     private int max_licencas;
     private Date data_criacao;
     private Date validade;
@@ -13,10 +15,14 @@ public class Pool {
     private boolean renovacao;
     private float preco;
     private Cliente cliente;
+    private Licenca licenca;
     private int licencas_usadas;
+    private ArrayList<Licenca> licencas = new ArrayList<>();
+    private static ArrayList<Pool> pools = new ArrayList<>();
 
     //Construtor:
-    public Pool(int max_licencas, Date data_criacao, Date validade, String estado,int licencas_disp, boolean estado_pagamento, boolean renovacao, float preco,Cliente cliente, List licencas, int licencas_usadas) {
+    public Pool(String nome, int max_licencas, Date data_criacao, Date validade, String estado,int licencas_disp, boolean estado_pagamento, boolean renovacao, float preco,Cliente cliente, List licencas, int licencas_usadas) {
+        this.nome = nome;
         this.max_licencas = 0;
         this.data_criacao = data_criacao;
         this.validade = validade;
@@ -27,6 +33,20 @@ public class Pool {
         this.preco = 0;
         this.cliente = cliente;
         this.licencas_usadas = 0;
+
+    }
+
+    public static void escolher_pool(String pool) {
+        System.out.println(getPools());
+        //Selecionar pool
+
+
+
+    }
+
+    public void adicionar_licenca_pool(Licenca licenca) {
+        licencas.add(licenca);
+        Escreverficheiros.writeToFileLicanca(licencas, "Licenças.txt");
 
     }
 
@@ -131,5 +151,29 @@ public class Pool {
     public void setCliente(Cliente cliente) {
 
         this.cliente = cliente;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public ArrayList<Licenca> getLicencas() {
+        return licencas;
+    }
+
+    public void setLicencas(ArrayList<Licenca> licencas) {
+        this.licencas = licencas;
+    }
+
+    public static ArrayList<Pool> getPools() {
+        return pools;
+    }
+
+    public void setPools(ArrayList<Pool> pools) {
+        this.pools = pools;
     }
 }
