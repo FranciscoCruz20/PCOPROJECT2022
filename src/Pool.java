@@ -1,13 +1,15 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Pool {
 
     //Atributos:
     private String nome;
     private static int max_licencas;
-    private Date data_criacao;
+    private static Date data_criacao;
     private Date validade;
     private String estado;
     private static int licencas_disp;
@@ -56,8 +58,19 @@ public class Pool {
 
     public static void adicionar_licenca_pool(Licenca licenca) {
         licencas.add(licenca);
-        Escreverficheiros.writeToFileLicanca(licencas, "Licenças.txt");
+        Escreverficheiros.writeToFileLicenca(licencas, "Licenças.txt");
     }
+
+    public void remover_licenca(Pool pool) throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Selecionar licença");
+        int opcao = input.nextInt();
+        if (opcao==0 && opcao>Pool.getMax_licencas()) {
+        licencas.remove(pool);
+
+        }
+    }
+
 
     //Metodos para obter data do sistema:
     public void obter_data() {
@@ -71,6 +84,8 @@ public class Pool {
     }
 
 
+
+
     //Getters e Setters:
 
 
@@ -82,7 +97,7 @@ public class Pool {
         Pool.licencas_usadas = licencas_usadas;
     }
 
-    public int getMax_licencas() {
+    public static int getMax_licencas() {
 
         return max_licencas;
     }
@@ -92,7 +107,7 @@ public class Pool {
         this.max_licencas = max_licencas;
     }
 
-    public Date getData_criacao() {
+    public static Date getData_criacao() {
 
         return data_criacao;
     }

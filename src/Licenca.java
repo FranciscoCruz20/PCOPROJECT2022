@@ -47,6 +47,17 @@ public class Licenca {
         System.out.println("Data de criação: "+ data_criacao.toString());
     }
 
+    public void alterar_licenca() {
+        Scanner input = new Scanner(System.in);
+        this.toString();
+        System.out.println("Que parametro quer alterar?");
+        String parametro = input.nextLine();
+        System.out.println("Oque deseja colocar?");
+        String alteracao = input.nextLine();
+        Escreverficheiros.alterar_ficheiros_licencas(licencas, "Licenças.txt", parametro,alteracao);
+        this.toString();
+    }
+
     public void criar_licenca() throws FileNotFoundException {
 
         Scanner input = new Scanner(System.in);
