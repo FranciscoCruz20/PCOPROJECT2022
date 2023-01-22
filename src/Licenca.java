@@ -20,7 +20,7 @@ public class Licenca {
     private static Cliente cliente;
     private static Pool pool;
     private static ArrayList<Licenca> licencas = new ArrayList<>();
-    private static ArrayList<Utilizador> utilizadorestma = new ArrayList<Utilizador>();
+    private static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
 
 
     //Construtor:
@@ -80,28 +80,26 @@ public class Licenca {
         }
         System.out.println("Utilizador TMA:");
         String utilizadortma = input.nextLine();
-        if (UtilizadorTMA.verificar_utilizador(utilizadorestma, utilizadortma)) {
-            if (UtilizadorTMA.verificar_licencas(utilizadorestma, licencas)){
-                System.out.println("Cliente:");
-                String cliente = input.nextLine();
-                if (Cliente.verificar_cliente(cliente) == true) {
-                    data_criacao();
-                    System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
-                    System.out.println("1-Confirmar licença");
-                    int opcao =  input.nextInt();
-                    if (opcao == 1) {
-                        System.out.println("Escolha a pool onde deseja colocar a nova licença");
-                        String pool = input.nextLine();
-                        Pool.getPools();
-                        Pool.escolher_pool(pool);
-                        System.out.println(toString());
-                    }
-                    else {
-                        System.out.println("Opção inválida");
-                    }
-                } else {
-                    System.out.println("Dados inseridos incorretos");
+        if (UtilizadorTMA.verificar_utilizadortma(utilizadorestma, utilizadortma)) {
+            System.out.println("Cliente:");
+            String cliente = input.nextLine();
+            if (Cliente.verificar_cliente(cliente) == true) {
+                data_criacao();
+                System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
+                System.out.println("1-Confirmar licença");
+                int opcao =  input.nextInt();
+                if (opcao == 1) {
+                    System.out.println("Escolha a pool onde deseja colocar a nova licença");
+                    String pool = input.nextLine();
+                    Pool.getPools();
+                    Pool.escolher_pool(pool);
+                    System.out.println(toString());
                 }
+                else {
+                    System.out.println("Opção inválida");
+                }
+            } else {
+                System.out.println("Dados inseridos incorretos");
             }
             }
         else {

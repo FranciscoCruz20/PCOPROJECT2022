@@ -4,8 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
-public class UtilizadorTMA extends Utilizador{
+public class UtilizadorTMA {
 
     //Atributos:
     private String username;
@@ -14,13 +15,13 @@ public class UtilizadorTMA extends Utilizador{
     private String gds;
     private Date data_criacao;
     private Date data_ultima_alteracao;
-    private String estado;
+    private static String estado;
+    private boolean licenca;
     private ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<>();
-    private ArrayList<Licenca> licencas = new ArrayList<>();
+    private static ArrayList<Licenca> licencas = new ArrayList<>();
 
     //Construtor:
-    public UtilizadorTMA(String nome, String email, String funcao, String password, String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado,ArrayList licencas) {
-        super(nome, email, funcao, password);
+    public UtilizadorTMA(String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado,boolean licenca) {
         this.username = username;
         this.pcc = pcc;
         this.hcmid = hcmid;
@@ -28,17 +29,17 @@ public class UtilizadorTMA extends Utilizador{
         this.data_criacao = data_criacao;
         this.data_ultima_alteracao = data_ultima_alteracao;
         this.estado = "Inativo";
-        this.licencas = licencas;
+        this.licenca = false;
     }
 
     //Metodos para obter data do sistema:
     public void obter_data() {
         Date data = new Date();
-        System.out.println("A hora do sitema é "+ data.toString());
+        System.out.println("A data atual é "+ data.toString());
     }
 
     public  void data_criacao() {
-        Date data_criacao = new Date();
+        this.data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
     }
 
@@ -52,6 +53,28 @@ public class UtilizadorTMA extends Utilizador{
                 //Verificação em linha:
                 while ((line = br.readLine()) != null) {
                     if (line.contains(nome)) {
+                        return false;
+                    }
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return true;
+            }
+        }
+        return true;
+    }
+
+    public static boolean verificar_dados_utilizadortma(ArrayList<UtilizadorTMA> utilizadorestma, String nome, int pcc, int hcmid) throws FileNotFoundException {
+        for(UtilizadorTMA utilizadortma : utilizadorestma) {
+            try {
+                //Leitura do ficheiro;
+                FileReader fr = new FileReader("UtilizadoresTMA.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                //Verificação em linha:
+                while ((line = br.readLine()) != null) {
+                    if (line.contains(nome) && line.equals(pcc) && line.equals(hcmid)) {
                         return true;
                     }
                 }
@@ -64,8 +87,8 @@ public class UtilizadorTMA extends Utilizador{
         return false;
     }
 
-    public static boolean verificar_licencas(ArrayList<Utilizador> utilizadorestma, ArrayList licencas) throws FileNotFoundException {
-        for(Utilizador utilizadortma : utilizadorestma) {
+    public static boolean verificar_licencas(ArrayList<UtilizadorTMA> utilizadorestma, ArrayList licencas) throws FileNotFoundException {
+        for(UtilizadorTMA utilizadortma : utilizadorestma) {
             try {
                 //Leitura do ficheiro;
                 FileReader fr = new FileReader("UtilizadoresTMA.txt");
@@ -84,6 +107,50 @@ public class UtilizadorTMA extends Utilizador{
             }
         }
         return false;
+    }
+    public void inserir_dados_tma() throws IOException {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insira o username, pcc(inteiro), hcmid(inteiro) e gds(string):");
+        System.out.print("Username: ");
+        String username = input.nextLine();
+        System.out.print("PCC: ");
+        int pcc = input.nextInt();
+        System.out.print("HCMID: ");
+        int hcmid = input.nextInt();
+        System.out.println("GDS:");
+        String gds = input.nextLine();
+        if (verificar_dados_utilizadortma(utilizadorestma, username, pcc, hcmid)) {
+            System.out.println("UtilizadorTMA com esse username,pcc e hcmid já existe");
+            inserir_dados_tma();
+        }
+        else {
+            System.out.println("1-Confirmar criação de utilizadorTMA");
+            System.out.println("2-Sair");
+            int opcao = input.nextInt();
+            if (opcao == 1) {
+                data_criacao();
+                this.data_ultima_alteracao = data_criacao;
+                UtilizadorTMA utilTMA = new UtilizadorTMA(username, pcc, hcmid, gds, data_criacao, data_ultima_alteracao, estado, licenca);
+                confirmar_criacao_tma(utilTMA);
+            }
+            else if (opcao == 2) {
+                Main.menu_utilizador();
+            }
+            else {
+                System.out.println("Opção inválida");
+            }
+        }
+    }
+
+    public void confirmar_criacao_tma(UtilizadorTMA utilTMA) {
+        utilizadorestma.add(utilTMA);
+        Escreverficheiros.writeToFileUtilizadorTMA(utilizadorestma, "UtilizadoresTMA");
+        System.out.println("UtilizadorTMA criado com sucesso");
+
+    }
+
+    public void criar_utilizadorTMA() throws IOException {
+        inserir_dados_tma();
     }
 
     //Getters e Setters:
@@ -144,7 +211,7 @@ public class UtilizadorTMA extends Utilizador{
         this.data_ultima_alteracao = data_ultima_alteracao;
     }
 
-    public String getEstado() {
+    public static String getEstado() {
         return estado;
     }
 
@@ -152,4 +219,19 @@ public class UtilizadorTMA extends Utilizador{
         this.estado = estado;
     }
 
+    public static ArrayList<Licenca> getLicencas() {
+        return licencas;
+    }
+
+    public void setLicencas(ArrayList<Licenca> licencas) {
+        this.licencas = licencas;
+    }
+
+    public boolean getLicenca() {
+        return licenca;
+    }
+
+    public void setLicenca(boolean licenca) {
+        this.licenca = licenca;
+    }
 }

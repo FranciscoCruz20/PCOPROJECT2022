@@ -7,6 +7,7 @@ public class Main {
     static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
     static Administrador admin = new Administrador("admin", "password");
     static Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null,null);
+    static UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
 
 
     //Main:
@@ -19,6 +20,9 @@ public class Main {
 
         Utilizador util = new Utilizador("nome", "email", "", "");
         Administrador admin = new Administrador("admin", "password");
+        Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null,null);
+        UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
+
         menu_inicial();
     }
 
@@ -206,7 +210,8 @@ public class Main {
 
             System.out.println("Menu utilizador:");
             System.out.println("1-Criar licença");
-            System.out.println("2-Sair");
+            System.out.println("2-Criar utilizadorTMA");
+            System.out.println("3-Sair");
             int opcao = input.nextInt();
             input.nextLine();
 
@@ -214,10 +219,12 @@ public class Main {
                 lic.criar_licenca();
             }
             else if (opcao == 2){
+                utilTMA.criar_utilizadorTMA();
+            }
+            else if (opcao == 3) {
                 menu_inicial();
             }
             else {
-
                 System.out.println("Opção inválida");
             }
         }

@@ -29,6 +29,18 @@ public class Escreverficheiros {
         }
     }
 
+    //Escreve no ficheiro selecionado a lista de utilizadores criados;
+    public static void writeToFileUtilizadorTMA(ArrayList<UtilizadorTMA> utilizadorestma, String fileName) {
+        try (FileWriter fileWriter = new FileWriter("UtilizadoresTMA.txt");
+             PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            for (UtilizadorTMA utilizadortma : utilizadorestma) {
+                printWriter.println("Username: " +utilizadortma.getUsername() + ", PCC: " + utilizadortma.getPcc() + ", HCMID: " + utilizadortma.getHcmid() + ", Estado: " + utilizadortma.getEstado() + ", Data de criação: " + utilizadortma.getData_criacao() + ", Data da última alteração: " + utilizadortma.getData_ultima_alteracao() + ", Licença : " + utilizadortma.getLicenca() + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //Escreve no ficheiro selecionado a lista de clientes criados;
     public static void writeToFileCliente(ArrayList<Cliente> clientes, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Clientes.txt");
