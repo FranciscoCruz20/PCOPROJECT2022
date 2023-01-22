@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+
+    static Cliente cli = new Cliente("","",000000000,000000000,"","","","","");
     static Utilizador util = new Utilizador("nome", "email", "", "");
     static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
     static Administrador admin = new Administrador("admin", "password");
@@ -75,7 +77,8 @@ public class Main {
                     System.out.println("Menu:");
                     System.out.println("1 - Criar novo utilizador");
                     System.out.println("2 - Verificar utilizador existente");
-                    System.out.println("3 - Sair");
+                    System.out.println("3 - Criar um cliente");
+                    System.out.println("4 - Sair");
 
                     int opcao = input.nextInt();
                     input.nextLine();
@@ -143,6 +146,10 @@ public class Main {
                     }
                     else if (opcao == 3) {
 
+                        cli.criar_cliente();
+                    }
+                    else if (opcao == 4) {
+
                         menu_inicial();
                     }
                     else {
@@ -201,7 +208,6 @@ public class Main {
 
 
     //Utilizadores:
-
     public static void menu_utilizador() throws IOException {
 
         Scanner input = new Scanner(System.in);

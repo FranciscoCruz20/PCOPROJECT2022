@@ -21,10 +21,10 @@ public class Licenca {
     private static Pool pool;
     private static ArrayList<Licenca> licencas = new ArrayList<>();
     private static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
-
+    private static ArrayList<Cliente> clientes = new ArrayList<>();
 
     //Construtor:
-    public Licenca(Date data_criacao,String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente, Pool pool) {
+    public Licenca(Date data_criacao, String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente, Pool pool) {
         this.data_criacao = data_criacao;
         this.estado = "Inativa";
         this.validade = validade;
@@ -83,21 +83,17 @@ public class Licenca {
         if (UtilizadorTMA.verificar_utilizadortma(utilizadorestma, utilizadortma)) {
             System.out.println("Cliente:");
             String cliente = input.nextLine();
-            if (Cliente.verificar_cliente(cliente) == true) {
+            if (Cliente.verificar_cliente(cliente)==true) {
                 data_criacao();
-                System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
+                //System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
                 System.out.println("1-Confirmar licença");
                 int opcao =  input.nextInt();
                 if (opcao == 1) {
-                    System.out.println("Escolha a pool onde deseja colocar a nova licença");
-                    String pool = input.nextLine();
-                    Pool.getPools();
-                    Pool.escolher_pool(pool);
-                    System.out.println(toString());
+                    confirmar_licenca();
                 }
                 else {
-                    System.out.println("Opção inválida");
-                }
+                        System.out.println("Opção inválida");
+                    }
             } else {
                 System.out.println("Dados inseridos incorretos");
             }
@@ -112,10 +108,29 @@ public class Licenca {
     }
 
     public void confirmar_licenca() {
+        Scanner input = new Scanner(System.in);
 
+        System.out.println("Escolha a pool onde deseja colocar a nova licença");
+        String pool = input.nextLine();
+        //Pool.getPools();
+        //Pool.escolher_pool(pool);
+        Licenca licenca = new Licenca(data_criacao, estado, validade, getUtilizadortma(), pagamento, renovacao, preco, getCliente(), getPool());
+        licencas.add(licenca);
+        Escreverficheiros.writeToFileLicenca(licencas, "Licenças.txt");
+        System.out.println("Licença criada com sucesso");
+        licenca.toString();
     }
 
     //Getters e Setters:
+
+    public static Pool getPool() {
+        return pool;
+    }
+
+    public static void setPool(Pool pool) {
+        Licenca.pool = pool;
+    }
+
     public static Cliente getCliente() {
         return cliente;
     }

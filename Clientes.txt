@@ -1,0 +1,18 @@
+Nome: antonio, Email: ant@gmail.com, Telefone: 926364814, Nif: 123456789, Endereço: , Código Postal: 9500-052, País: Portugal, Informação adicional: Nunca usou, Método de pagamento: MbWay, Gestor: null
+
+Nome: antonio, Email: ant@gmail.com, Telefone: 926364814, Nif: 123456789, Endereço: , Código Postal: 9500-052, País: Portugal, Informação adicional: Nunca usou, Método de pagamento: MbWay, Gestor: null
+
+Nome: a, Email: a, Telefone: 2, Nif: 2, Endereço: , Código Postal: 2, País: p, Informação adicional: p, Método de pagamento: p, Gestor: null
+
+Nome: antonio, Email: ant@gmail.com, Telefone: 926364814, Nif: 123456789, Endereço: , Código Postal: 9500-052, País: Portugal, Informação adicional: Nunca usou, Método de pagamento: MbWay, Gestor: null
+
+Nome: a, Email: a, Telefone: 2, Nif: 2, Endereço: , Código Postal: 2, País: p, Informação adicional: p, Método de pagamento: p, Gestor: null
+
+Nome: d, Email: d, Telefone: 2, Nif: 2, Endereço: , Código Postal: 2, País: p, Informação adicional: p, Método de pagamento: p, Gestor: null
+
+Nome: q, Email: q, Telefone: 1, Nif: 1, Endereço: , Código Postal: 1, País: 1, Informação adicional: 1, Método de pagamento: 1, Gestor: null
+
+Nome: t, Email: t, Telefone: 5, Nif: 5, Endereço: , Código Postal: 5, País: t, Informação adicional: t, Método de pagamento: t, Gestor: null
+
+Nome: y, Email: y, Telefone: 6, Nif: 6, Endereço: , Código Postal: 6, País: 6, Informação adicional: 6, Método de pagamento: 6, Gestor: null
+

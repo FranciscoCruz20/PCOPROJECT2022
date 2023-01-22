@@ -19,7 +19,7 @@ public class Escreverficheiros {
 
     //Escreve no ficheiro selecionado a lista de utilizadores criados;
     public static void writeToFile(ArrayList<Utilizador> utilizadores, String fileName) {
-        try (FileWriter fileWriter = new FileWriter("Utilizadores.txt");
+        try (FileWriter fileWriter = new FileWriter("Utilizadores.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Utilizador utilizador : utilizadores) {
                 printWriter.println("Nome: " +utilizador.getNome() + ", Email: " + utilizador.getEmail() + ", Função: " + utilizador.getFuncao() + ", Password: " + utilizador.getPassword() + "\n");
@@ -31,7 +31,7 @@ public class Escreverficheiros {
 
     //Escreve no ficheiro selecionado a lista de utilizadores criados;
     public static void writeToFileUtilizadorTMA(ArrayList<UtilizadorTMA> utilizadorestma, String fileName) {
-        try (FileWriter fileWriter = new FileWriter("UtilizadoresTMA.txt");
+        try (FileWriter fileWriter = new FileWriter("UtilizadoresTMA.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (UtilizadorTMA utilizadortma : utilizadorestma) {
                 printWriter.println("Username: " +utilizadortma.getUsername() + ", PCC: " + utilizadortma.getPcc() + ", HCMID: " + utilizadortma.getHcmid() + ", Estado: " + utilizadortma.getEstado() + ", Data de criação: " + utilizadortma.getData_criacao() + ", Data da última alteração: " + utilizadortma.getData_ultima_alteracao() + ", Licença : " + utilizadortma.getLicenca() + "\n");
@@ -43,7 +43,7 @@ public class Escreverficheiros {
 
     //Escreve no ficheiro selecionado a lista de clientes criados;
     public static void writeToFileCliente(ArrayList<Cliente> clientes, String fileName) {
-        try (FileWriter fileWriter = new FileWriter("Clientes.txt");
+        try (FileWriter fileWriter = new FileWriter("Clientes.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Cliente cliente : clientes) {
                 printWriter.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail() + ", Telefone: " + cliente.getTelefone() + ", Nif: " + cliente.getNif() + ", Endereço: " + cliente.getEndereco() + ", Código Postal: " + cliente.getCodigo_postal() + ", País: " + cliente.getPais() + ", Informação adicional: " + cliente.getInformacao_adicional() + ", Método de pagamento: " + cliente.getPagamento_default() + ", Gestor: " + cliente.getGestor() +"\n");
@@ -55,7 +55,7 @@ public class Escreverficheiros {
 
     //Escreve no ficheiro selecionado a lista de licenças criados;
     public static void writeToFileLicenca(ArrayList<Licenca> licencas, String fileName) {
-        try (FileWriter fileWriter = new FileWriter("Licenças.txt");
+        try (FileWriter fileWriter = new FileWriter("Licenças.txt",true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Licenca licenca : licencas) {
                 printWriter.println();
@@ -67,7 +67,7 @@ public class Escreverficheiros {
 
     //Escreve no ficheiro selecionado a lista de pools criados;
     public static void writeToFilePool(ArrayList<Pool> pools, String fileName) {
-        try (FileWriter fileWriter = new FileWriter("Pools.txt");
+        try (FileWriter fileWriter = new FileWriter("Pools.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Pool pool : pools) {
                 printWriter.println();
