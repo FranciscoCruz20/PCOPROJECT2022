@@ -1,4 +1,10 @@
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,13 +16,13 @@ public class Pool {
     private String nome;
     private static int max_licencas;
     private static Date data_criacao;
-    private Date validade;
-    private String estado;
+    private static Date validade;
+    private static String estado;
     private static int licencas_disp;
-    private boolean estado_pagamento;
-    private boolean renovacao;
-    private float preco;
-    private Cliente cliente;
+    private static boolean estado_pagamento;
+    private static boolean renovacao;
+    private static float preco;
+    private static Cliente cliente;
     private static Licenca licenca;
     private static int licencas_usadas;
     private static ArrayList<Licenca> licencas = new ArrayList<>();
@@ -42,6 +48,82 @@ public class Pool {
         adicionar_licenca_pool(licenca);
         setLicencas_disp(licencas_disp--);
         setLicencas_usadas(licencas_usadas++);
+    }
+
+    public static void criar_pool() throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Introduza os dados da pool");
+        String nome = input.nextLine();
+        if (verificar_pool(pools, nome)) {
+            System.out.println("Pool com este noem já existe");
+            criar_pool();
+        }
+        else {
+            System.out.println("Validade(ano-mês-dia):");
+            try {
+                String validade = input.nextLine();
+
+                // Using parse method to convert the string to LocalDate object
+                LocalDate date = LocalDate.parse(validade, DateTimeFormatter.ISO_DATE);
+
+                // Printing the date object
+                System.out.println(date);
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println("Exception: " + e);
+            }
+            catch (DateTimeParseException e) {
+                System.out.println("Exception: " + e);
+            }
+            Date data_criacao = data_criacao();
+            System.out.println("Número máximo de licenças:");
+            int max_licencas = input.nextInt();
+            setLicencas_disp(max_licencas);
+            setMax_licencas(max_licencas);
+            setLicencas_usadas(0);
+            System.out.println("Pretende renovação?(yes/no)");
+            String decisao = input.nextLine();
+            if (decisao == "yes") {
+                setRenovacao(true);
+            }
+            else if (decisao == "no") {
+                setRenovacao(false);
+            }
+            else {
+                System.out.println("Opção inválida");
+            }
+            System.out.println("Cliente:");
+            String cliente = input.nextLine();
+            if (Cliente.verificar_cliente(cliente)==true) {
+                Pool pool = new Pool(nome, max_licencas, data_criacao, getValidade(), getEstado(), getLicencas_disp(), getEstado_pagamento(), getRenovacao(), getPreco(), getCliente(), getLicencas(), getLicencas_usadas());
+                pools.add(pool);
+                Escreverficheiros.writeToFilePool(pools, "Pools.txt");
+                System.out.println("Pool criada com sucesso");
+                pool.toString();
+            }
+        }
+    }
+
+    public static boolean verificar_pool(ArrayList<Pool> pools, String nome) throws FileNotFoundException {
+        for(Pool pool : pools) {
+            try {
+                //Leitura do ficheiro;
+                FileReader fr = new FileReader("Pools.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                //Verificação em linha:
+                while ((line = br.readLine()) != null) {
+                    if (line.contains(nome)) {
+                        return false;
+                    }
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return true;
+            }
+        }
+        return true;
     }
 
     public static void escolher_pool(String pool) {
@@ -78,9 +160,10 @@ public class Pool {
         System.out.println("Data: "+ data.toString());
     }
 
-    public  void data_criacao() {
+    public static Date data_criacao() {
         Date data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
+        return data_criacao;
     }
 
 
@@ -102,9 +185,9 @@ public class Pool {
         return max_licencas;
     }
 
-    public void setMax_licencas(int max_licencas) {
+    public static void setMax_licencas(int max_licencas) {
 
-        this.max_licencas = max_licencas;
+        Pool.max_licencas = max_licencas;
     }
 
     public static Date getData_criacao() {
@@ -117,7 +200,7 @@ public class Pool {
         this.data_criacao = data_criacao;
     }
 
-    public Date getValidade() {
+    public static Date getValidade() {
 
         return validade;
     }
@@ -127,7 +210,7 @@ public class Pool {
         this.validade = validade;
     }
 
-    public String getEstado() {
+    public static String getEstado() {
 
         return estado;
     }
@@ -147,7 +230,7 @@ public class Pool {
         Pool.licencas_disp = licencas_disp;
     }
 
-    public boolean getEstado_pagamento() {
+    public static boolean getEstado_pagamento() {
 
         return estado_pagamento;
     }
@@ -157,17 +240,17 @@ public class Pool {
         this.estado_pagamento = estado_pagamento;
     }
 
-    public boolean getRenovacao() {
+    public static boolean getRenovacao() {
 
         return renovacao;
     }
 
-    public void setRenovacao(boolean renovacao) {
+    public static void setRenovacao(boolean renovacao) {
 
-        this.renovacao = renovacao;
+        Pool.renovacao = renovacao;
     }
 
-    public float getPreco() {
+    public static float getPreco() {
 
         return preco;
     }
@@ -177,7 +260,7 @@ public class Pool {
         this.preco = max_licencas*100;
     }
 
-    public Cliente getCliente() {
+    public static Cliente getCliente() {
 
         return cliente;
     }
@@ -195,7 +278,7 @@ public class Pool {
         this.nome = nome;
     }
 
-    public ArrayList<Licenca> getLicencas() {
+    public static ArrayList<Licenca> getLicencas() {
         return licencas;
     }
 
@@ -209,5 +292,20 @@ public class Pool {
 
     public void setPools(ArrayList<Pool> pools) {
         this.pools = pools;
+    }
+
+    public static Licenca getLicenca() {
+        return licenca;
+    }
+
+    public static void setLicenca(Licenca licenca) {
+        Pool.licenca = licenca;
+    }
+
+    @Override
+    public String toString() {
+        return "Pool{" +
+                "nome='" + nome + '\'' +
+                '}';
     }
 }

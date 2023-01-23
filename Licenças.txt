@@ -1,2 +1,7 @@
+private String nome;
 
 
+    private static Licenca licenca;
+    private static int licencas_usadas;
+    private static ArrayList<Licenca> licencas = new ArrayList<>();
+    private static ArrayList<Pool> pools = new ArrayList<>();
