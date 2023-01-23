@@ -18,13 +18,13 @@ public class Licenca {
     private static boolean renovacao;
     private static float preco;
     private static Cliente cliente;
-    private static Pool pool;
+    //private static Pool pool;
     private static ArrayList<Licenca> licencas = new ArrayList<>();
     private static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
     private static ArrayList<Cliente> clientes = new ArrayList<>();
 
     //Construtor:
-    public Licenca(Date data_criacao, String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente, Pool pool) {
+    public Licenca(Date data_criacao, String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente) {
         this.data_criacao = data_criacao;
         this.estado = "Inativa";
         this.validade = validade;
@@ -33,7 +33,7 @@ public class Licenca {
         this.renovacao = false;
         this.preco = 100;
         this.cliente = cliente;
-        this.pool = pool;
+        //this.pool = pool;
     }
 
     //Metodos para obter data do sistema:
@@ -42,9 +42,10 @@ public class Licenca {
         System.out.println("A hora do sitema é "+ data.toString());
     }
 
-    public static void data_criacao() {
+    public static Date data_criacao() {
         Date data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
+        return data_criacao;
     }
 
     public void alterar_licenca() {
@@ -84,12 +85,17 @@ public class Licenca {
             System.out.println("Cliente:");
             String cliente = input.nextLine();
             if (Cliente.verificar_cliente(cliente)==true) {
-                data_criacao();
+                Date data_criacao = data_criacao();
                 //System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
                 System.out.println("1-Confirmar licença");
+                String estado = getEstado();
                 int opcao =  input.nextInt();
                 if (opcao == 1) {
-                    confirmar_licenca();
+                    Licenca licenca = new Licenca(data_criacao, estado, getValidade(), getUtilizadortma(), getPagamento(), getRenovacao(), getPreco(), getCliente());
+                    licencas.add(licenca);
+                    Escreverficheiros.writeToFileLicenca(licencas, "Licenças.txt");
+                    System.out.println("Licença criada com sucesso");
+                    licenca.toString();
                 }
                 else {
                         System.out.println("Opção inválida");
@@ -107,31 +113,8 @@ public class Licenca {
 
     }
 
-    public void confirmar_licenca() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Escolha a pool onde deseja colocar a nova licença");
-        String pool = input.nextLine();
-        //Pool.getPools();
-        //Pool.escolher_pool(pool);
-        Licenca licenca = new Licenca(data_criacao, estado, validade, getUtilizadortma(), pagamento, renovacao, preco, getCliente(), getPool());
-        licencas.add(licenca);
-        Escreverficheiros.writeToFileLicenca(licencas, "Licenças.txt");
-        System.out.println("Licença criada com sucesso");
-        licenca.toString();
-    }
-
     //Getters e Setters:
-
-    public static Pool getPool() {
-        return pool;
-    }
-
-    public static void setPool(Pool pool) {
-        Licenca.pool = pool;
-    }
-
-    public static Cliente getCliente() {
+    public  Cliente getCliente() {
         return cliente;
     }
 
@@ -139,7 +122,7 @@ public class Licenca {
         this.cliente = cliente;
     }
 
-    public static float getPreco() {
+    public  float getPreco() {
         return preco;
     }
 
@@ -147,7 +130,7 @@ public class Licenca {
         this.preco = preco;
     }
 
-    public static boolean getRenovacao() {
+    public  boolean getRenovacao() {
         return renovacao;
     }
 
@@ -155,7 +138,7 @@ public class Licenca {
         this.renovacao = renovacao;
     }
 
-    public static boolean getPagamento() {
+    public  boolean getPagamento() {
         return pagamento;
     }
 
@@ -163,7 +146,7 @@ public class Licenca {
         this.pagamento = pagamento;
     }
 
-    public static UtilizadorTMA getUtilizadortma() {
+    public  UtilizadorTMA getUtilizadortma() {
         return utilizadortma;
     }
 
@@ -171,7 +154,7 @@ public class Licenca {
         this.utilizadortma = utilizadortma;
     }
 
-    public static Date getValidade() {
+    public  Date getValidade() {
         return validade;
     }
 
@@ -179,7 +162,7 @@ public class Licenca {
         this.validade = validade;
     }
 
-    public static String getEstado() {
+    public  String getEstado() {
         return estado;
     }
 
@@ -187,7 +170,7 @@ public class Licenca {
         this.estado = estado;
     }
 
-    public static Date getData_criacao() {
+    public  Date getData_criacao() {
         return data_criacao;
     }
 
@@ -205,7 +188,6 @@ public class Licenca {
                 ", renovacao=" + renovacao +
                 ", preco=" + preco +
                 ", cliente=" + cliente +
-                ", pool=" + pool +
                 '}';
     }
 }

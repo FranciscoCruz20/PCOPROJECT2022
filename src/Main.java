@@ -7,8 +7,9 @@ public class Main {
     static Cliente cli = new Cliente("","",000000000,000000000,"","","","","");
     static Utilizador util = new Utilizador("nome", "email", "", "");
     static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
+    static ArrayList<Cliente> clientes = new ArrayList<>();
     static Administrador admin = new Administrador("admin", "password");
-    static Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null,null);
+    static Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null);
     static UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
 
 
@@ -18,11 +19,9 @@ public class Main {
     //Password: 12345
     public static void main(String[] args) throws IOException {
 
-
-
         Utilizador util = new Utilizador("nome", "email", "", "");
         Administrador admin = new Administrador("admin", "password");
-        Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null,null);
+        Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null);
         UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
 
         menu_inicial();
@@ -78,7 +77,8 @@ public class Main {
                     System.out.println("1 - Criar novo utilizador");
                     System.out.println("2 - Verificar utilizador existente");
                     System.out.println("3 - Criar um cliente");
-                    System.out.println("4 - Sair");
+                    System.out.println("4 - Verificar cliente existente");
+                    System.out.println("5 - Sair");
 
                     int opcao = input.nextInt();
                     input.nextLine();
@@ -150,6 +150,23 @@ public class Main {
                     }
                     else if (opcao == 4) {
 
+                        System.out.println("Insira o nome do cliente:");
+                        System.out.print("Nome: ");
+                        String nome = input.nextLine();
+
+                        if (cli.verificar_cliente(clientes, nome)) {
+
+                            System.out.println("Existe um cliente com este nome");
+                            System.out.println(nome);
+
+                        } else {
+
+                            System.out.println("Não existe nenhum cliente com este nome");
+                        }
+
+                    }
+                    else if (opcao == 5) {
+
                         menu_inicial();
                     }
                     else {
@@ -163,49 +180,6 @@ public class Main {
             }
         }
     }
-
-    /*
-    public static void menu_confirmacao_inicial() throws IOException {
-        //Inputs:
-        Scanner input = new Scanner(System.in);
-        while (true) {
-            System.out.println("Insira o nome de utilizador e o email:");
-            System.out.print("Nome: ");
-            String nome = input.nextLine();
-            System.out.print("Email: ");
-            String email = input.nextLine();
-            if (util.verificar_utilizador_confirmar(utilizadores, nome, email)) {
-                if (util.getConfrimacao_email() == false) {
-                    System.out.println("1-Confirmar email");
-                    System.out.println("2-Sair");
-                    int opcao = input.nextInt();
-                    input.nextLine();
-                    if (opcao == 1) {
-                        util.setConfrimacao_email(true);
-                        System.out.println("Insira a sua nova password:");
-                        String password = input.nextLine();
-                        Escreverficheiros.writeToFile(utilizadores, "Utilizadores.txt");
-                        menu_utilizador();
-                    } else if (opcao == 2) {
-                        menu_inicial();
-                    } else {
-                        System.out.println("Opção inválida");
-                    }
-                } else {
-                    System.out.println("Email confirmado");
-                    menu_inicial();
-                }
-            } else {
-                System.out.println("Não existe utilizador com esse nome ou email");
-                menu_inicial();
-
-            }
-        }
-    }
-
-
-     */
-
 
     //Utilizadores:
     public static void menu_utilizador() throws IOException {

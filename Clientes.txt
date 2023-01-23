@@ -16,3 +16,7 @@ Nome: t, Email: t, Telefone: 5, Nif: 5, Endereço: , Código Postal: 5, País: t
 
 Nome: y, Email: y, Telefone: 6, Nif: 6, Endereço: , Código Postal: 6, País: 6, Informação adicional: 6, Método de pagamento: 6, Gestor: null
 
+Nome: r, Email: r, Telefone: 1, Nif: 1, Endereço: , Código Postal: 1, País: 1, Informação adicional: 1, Método de pagamento: 1, Gestor: null
+
+Nome: z, Email: z, Telefone: 1, Nif: 1, Endereço: , Código Postal: z, País: z, Informação adicional: z, Método de pagamento: z, Gestor: null
+

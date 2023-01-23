@@ -128,6 +128,7 @@ public class Cliente {
         return null;
     }
 
+
     //Getters e Setters:
     public Utilizador getGestor() {
         return gestor;
