@@ -1,3 +1,5 @@
+package domain;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,7 +18,7 @@ public class Pool {
     private String nome;
     private static int max_licencas;
     private static Date data_criacao;
-    private static Date validade;
+    private static String validade;
     private static String estado;
     private static int licencas_disp;
     private static boolean estado_pagamento;
@@ -29,7 +31,7 @@ public class Pool {
     private static ArrayList<Pool> pools = new ArrayList<>();
 
     //Construtor:
-    public Pool(String nome, int max_licencas, Date data_criacao, Date validade, String estado,int licencas_disp, boolean estado_pagamento, boolean renovacao, float preco,Cliente cliente, List licencas, int licencas_usadas) {
+    public Pool(String nome, int max_licencas, Date data_criacao, String validade, String estado,int licencas_disp, boolean estado_pagamento, boolean renovacao, float preco,Cliente cliente, List licencas, int licencas_usadas) {
         this.nome = nome;
         this.max_licencas = 0;
         this.data_criacao = data_criacao;
@@ -53,9 +55,10 @@ public class Pool {
     public static void criar_pool() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         System.out.println("Introduza os dados da pool");
+        System.out.println("Nome:");
         String nome = input.nextLine();
-        if (verificar_pool(pools, nome)) {
-            System.out.println("Pool com este noem já existe");
+        if (verificar_pool(pools, nome)==false) {
+            System.out.println("domain.Pool com este nome já existe");
             criar_pool();
         }
         else {
@@ -75,6 +78,7 @@ public class Pool {
             catch (DateTimeParseException e) {
                 System.out.println("Exception: " + e);
             }
+            setValidade(validade);
             Date data_criacao = data_criacao();
             System.out.println("Número máximo de licenças:");
             int max_licencas = input.nextInt();
@@ -92,13 +96,14 @@ public class Pool {
             else {
                 System.out.println("Opção inválida");
             }
-            System.out.println("Cliente:");
+            System.out.println("domain.Cliente:");
             String cliente = input.nextLine();
             if (Cliente.verificar_cliente(cliente)==true) {
+                setCliente(Cliente.procurarCliente(cliente));
                 Pool pool = new Pool(nome, max_licencas, data_criacao, getValidade(), getEstado(), getLicencas_disp(), getEstado_pagamento(), getRenovacao(), getPreco(), getCliente(), getLicencas(), getLicencas_usadas());
                 pools.add(pool);
                 Escreverficheiros.writeToFilePool(pools, "Pools.txt");
-                System.out.println("Pool criada com sucesso");
+                System.out.println("domain.Pool criada com sucesso");
                 pool.toString();
             }
         }
@@ -133,7 +138,7 @@ public class Pool {
                 confirmar_pool_licenca();
             }
             else {
-                System.out.println("Pool cheia");
+                System.out.println("domain.Pool cheia");
             }
         }
     }
@@ -200,14 +205,14 @@ public class Pool {
         this.data_criacao = data_criacao;
     }
 
-    public static Date getValidade() {
+    public static String getValidade() {
 
         return validade;
     }
 
-    public void setValidade(Date validade) {
+    public static void setValidade(String validade) {
 
-        this.validade = validade;
+        Pool.validade = validade;
     }
 
     public static String getEstado() {
@@ -265,9 +270,9 @@ public class Pool {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public static void setCliente(Cliente cliente) {
 
-        this.cliente = cliente;
+        Pool.cliente = cliente;
     }
 
     public String getNome() {
@@ -304,7 +309,7 @@ public class Pool {
 
     @Override
     public String toString() {
-        return "Pool{" +
+        return "domain.Pool{" +
                 "nome='" + nome + '\'' +
                 '}';
     }

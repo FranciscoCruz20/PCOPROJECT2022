@@ -1,3 +1,5 @@
+package domain;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +20,7 @@ public class Utilizador {
     private static ArrayList<Utilizador> clientes = new ArrayList<>();
 
     //Construtor:
-    Utilizador(String nome, String email, String funcao, String password) {
+    public Utilizador(String nome, String email, String funcao, String password) {
         this.nome = nome;
         this.email = email;
         this.funcao = funcao;

@@ -1,24 +1,10 @@
-Nome: a, Email: a, Função: Gestor, Password: 12
-
-Nome: as, Email: as, Função: Admin, Password: 12345
-
-Nome: fran, Email: fran, Função: Gestor, Password: 1
-
-Nome: fran, Email: fran, Função: Gestor, Password: 1
-
-Nome: g, Email: f, Função: Gestor, Password: 52345
-
-Nome: a, Email: a, Função: Gestor, Password: 12
+Nome: q, Email: q, Função: Gestor, Password: 1
 
 Nome: q, Email: q, Função: Gestor, Password: 1
 
-Nome: t, Email: t, Função: Gestor, Password: 5
+Nome: q, Email: q, Função: Gestor, Password: 1
 
-Nome: y, Email: y, Função: Gestor, Password: 6
+Nome: q, Email: q, Função: Gestor, Password: 1
 
-Nome: r, Email: t, Função: Gestor, Password: 1
-
-Nome: z, Email: z, Função: Gestor, Password: 1
-
-Nome: z, Email: z, Função: Gestor, Password: 1
+Nome: q, Email: 1, Função: Gestor, Password: 1
 

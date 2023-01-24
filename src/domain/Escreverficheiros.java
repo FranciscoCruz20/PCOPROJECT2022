@@ -1,3 +1,7 @@
+package domain;
+
+import domain.Cliente;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -58,7 +62,7 @@ public class Escreverficheiros {
         try (FileWriter fileWriter = new FileWriter("Licenças.txt",true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Licenca licenca : licencas) {
-                printWriter.println("Data de criação: " + licenca.getData_criacao() + "Estado: " + licenca.getEstado() + "Validade: " + licenca.getValidade() + "UtilizadorTMA:" + licenca.getUtilizadortma() + "Pagamento: " + licenca.getPagamento() + "Renovação: " + licenca.getRenovacao() + "Preço " + licenca.getPreco() + "Clientes: " + licenca.getCliente());
+                printWriter.println("Data de criação: " + licenca.getData_criacao() + "Estado: " + licenca.getEstado() + "Validade: " + licenca.getValidade() + "domain.UtilizadorTMA:" + licenca.getUtilizadortma() + "Pagamento: " + licenca.getPagamento() + "Renovação: " + licenca.getRenovacao() + "Preço " + licenca.getPreco() + "Clientes: " + licenca.getCliente());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,7 +81,7 @@ public class Escreverficheiros {
         }
     }
 
-    public static void alterar_ficheiros_licencas(ArrayList<Licenca> licencas,String filename,String parametro, String alteracao) {
+    public static void alterar_ficheiros_licencas(ArrayList<Licenca> licencas, String filename, String parametro, String alteracao) {
         // Caminho do arquivo
         String filePath = "Licenças.txt";
         // O parâmetro que você deseja alterar

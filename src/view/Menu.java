@@ -1,8 +1,20 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.*;
+package view;
+import domain.Cliente;
+import domain.Utilizador;
+import domain.Administrador;
+import domain.Escreverficheiros;
+import domain.Licenca;
+import domain.Pool;
+import domain.UtilizadorTMA;
 
-public class Main {
+
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Menu {
 
     static Cliente cli = new Cliente("","",000000000,000000000,"","","","","");
     static Utilizador util = new Utilizador("nome", "email", "", "");
@@ -13,19 +25,6 @@ public class Main {
     static UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
     static Pool p = new Pool("", 0,null,null,"",0,false,false,0,null,null,0);
 
-    //Main:
-    //Para aceder como admin:
-    //Username: admin
-    //Password: 12345
-    public static void main(String[] args) throws IOException {
-
-        Utilizador util = new Utilizador("nome", "email", "", "");
-        Administrador admin = new Administrador("admin", "password");
-        Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null);
-        UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
-
-        menu_inicial();
-    }
 
     //Primeiro menu apresentado, com acesso ao menu de administrador(com verificação implementada), confirmação de email de utilizador(com verificação do email), menu de utilizador(com verificação de nome e password):
     public static void menu_inicial() throws IOException {
@@ -57,7 +56,7 @@ public class Main {
     }
 
 
-    //Administrador:
+    //domain.Administrador:
     //Menu para aceder como administrador:
     public static void menu_admin() throws IOException {
 
@@ -91,7 +90,7 @@ public class Main {
 
                         if (util.verificar_utilizador(utilizadores, nome)) {
 
-                            System.out.println("Utilizador com esse nome já existe");
+                            System.out.println("domain.Utilizador com esse nome já existe");
                         }
                         else {
 
@@ -203,7 +202,7 @@ public class Main {
                 utilTMA.criar_utilizadorTMA();
             }
             else if (opcao == 3) {
-               p.criar_pool();
+                p.criar_pool();
             }
             else if (opcao == 4) {
                 menu_inicial();
@@ -232,10 +231,3 @@ public class Main {
         }
     }
 }
-
-
-
-
-
-
-

@@ -1,3 +1,5 @@
+package domain;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -25,8 +27,8 @@ public class Administrador {
 
     /*
     //verificar a existência do nome inserido na lista de utilizadores no ficheiro txt;
-    public boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
-        for(Utilizador utilizador : utilizadores) {
+    public boolean verificar_utilizador(ArrayList<domain.Utilizador> utilizadores, String nome) throws FileNotFoundException {
+        for(domain.Utilizador utilizador : utilizadores) {
             try {
                 //Leitura do ficheiro;
                 FileReader fr = new FileReader("Utilizadores.txt");

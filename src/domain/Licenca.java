@@ -1,3 +1,5 @@
+package domain;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,19 +14,19 @@ public class Licenca {
     //Atributos:
     private static Date data_criacao;
     private static String estado;
-    private static Date validade;
-    private static UtilizadorTMA utilizadortma;
+    private static String validade;
+    private static String utilizadortma;
     private static boolean pagamento;
     private static boolean renovacao;
     private static float preco;
     private static Cliente cliente;
-    //private static Pool pool;
+    //private static domain.Pool pool;
     private static ArrayList<Licenca> licencas = new ArrayList<>();
     private static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
     private static ArrayList<Cliente> clientes = new ArrayList<>();
 
     //Construtor:
-    public Licenca(Date data_criacao, String estado, Date validade, UtilizadorTMA utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente) {
+    public Licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente) {
         this.data_criacao = data_criacao;
         this.estado = "Inativa";
         this.validade = validade;
@@ -79,12 +81,15 @@ public class Licenca {
         catch (DateTimeParseException e) {
             System.out.println("Exception: " + e);
         }
-        System.out.println("Utilizador TMA:");
+        setValidade(validade);
+        System.out.println("domain.Utilizador TMA:");
         String utilizadortma = input.nextLine();
         if (UtilizadorTMA.verificar_utilizadortma(utilizadorestma, utilizadortma)) {
-            System.out.println("Cliente:");
+            setUtilizadortma(utilizadortma);
+            System.out.println("domain.Cliente:");
             String cliente = input.nextLine();
             if (Cliente.verificar_cliente(cliente)==true) {
+                setCliente(cliente);
                 Date data_criacao = data_criacao();
                 //System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
                 System.out.println("1-Confirmar licença");
@@ -114,12 +119,12 @@ public class Licenca {
     }
 
     //Getters e Setters:
-    public  Cliente getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(String cliente) {
+        this.cliente = Cliente.procurarCliente(cliente);
     }
 
     public  float getPreco() {
@@ -146,19 +151,19 @@ public class Licenca {
         this.pagamento = pagamento;
     }
 
-    public  UtilizadorTMA getUtilizadortma() {
+    public String getUtilizadortma() {
         return utilizadortma;
     }
 
-    public void setUtilizadortma(UtilizadorTMA utilizadortma) {
+    public void setUtilizadortma(String utilizadortma) {
         this.utilizadortma = utilizadortma;
     }
 
-    public  Date getValidade() {
+    public String getValidade() {
         return validade;
     }
 
-    public void setValidade(Date validade) {
+    public void setValidade(String validade) {
         this.validade = validade;
     }
 
@@ -179,7 +184,7 @@ public class Licenca {
     }
 
     public String toString() {
-        return "Licenca{" +
+        return "domain.Licenca{" +
                 "data_criacao=" + data_criacao +
                 ", estado='" + estado + '\'' +
                 ", validade=" + validade +

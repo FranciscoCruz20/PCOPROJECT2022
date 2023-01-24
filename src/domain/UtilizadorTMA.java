@@ -1,3 +1,7 @@
+package domain;
+
+import view.Menu;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -120,7 +124,7 @@ public class UtilizadorTMA {
         System.out.println("GDS:");
         String gds = input.nextLine();
         if (verificar_dados_utilizadortma(utilizadorestma, username, pcc, hcmid)) {
-            System.out.println("UtilizadorTMA com esse username,pcc e hcmid já existe");
+            System.out.println("domain.UtilizadorTMA com esse username,pcc e hcmid já existe");
             inserir_dados_tma();
         }
         else {
@@ -134,7 +138,7 @@ public class UtilizadorTMA {
                 confirmar_criacao_tma(utilTMA);
             }
             else if (opcao == 2) {
-                Main.menu_utilizador();
+                Menu.menu_utilizador();
             }
             else {
                 System.out.println("Opção inválida");
@@ -145,7 +149,7 @@ public class UtilizadorTMA {
     public void confirmar_criacao_tma(UtilizadorTMA utilTMA) {
         utilizadorestma.add(utilTMA);
         Escreverficheiros.writeToFileUtilizadorTMA(utilizadorestma, "UtilizadoresTMA");
-        System.out.println("UtilizadorTMA criado com sucesso");
+        System.out.println("domain.UtilizadorTMA criado com sucesso");
 
     }
 

@@ -1,3 +1,5 @@
+package domain;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -114,7 +116,7 @@ public class Cliente {
         Cliente cliente = new Cliente(nome, email, telefone, nif, endereco, codigo_postal, pais, informacao_adicional, pagamento_default);
         clientes.add(cliente);
         Escreverficheiros.writeToFileCliente(clientes, "Clientes.txt");
-        System.out.println("Cliente criado com sucesso");
+        System.out.println("domain.Cliente criado com sucesso");
         cliente.toString();
 
     }
@@ -220,7 +222,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
+        return "domain.Cliente{" +
                 "nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", telefone=" + telefone +
