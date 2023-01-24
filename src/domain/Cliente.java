@@ -87,36 +87,36 @@ public class Cliente {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Nome:");
-        String  nome = input.nextLine();
+        String nome = input.nextLine();
 
         System.out.println("Email:");
-        String  email = input.nextLine();
+        String email = input.nextLine();
 
         System.out.println("Número de telefone:");
-        int telefone = input.nextInt();
+        int telefone = Integer.parseInt(input.nextLine());
 
         System.out.println("NIF:");
-        int nif = input.nextInt();
-
-        System.out.println("Endereço:");
-        String  endereco = input.nextLine();
+        int nif = Integer.parseInt(input.nextLine());
 
         System.out.println("Código postal:");
-        String  codigo_postal = input.nextLine();
+        String codigo_postal = input.nextLine();
+
+        System.out.println("Endereço:");
+        String endereco = input.nextLine();
 
         System.out.println("País");
         String  pais = input.nextLine();
 
         System.out.println("Informação adicional:");
-        String  informacao_adicional = input.nextLine();
+        String informacao_adicional = input.nextLine();
 
         System.out.println("Pagamento default:");
-        String  pagamento_default = input.nextLine();
+        String pagamento_default = input.nextLine();
 
         Cliente cliente = new Cliente(nome, email, telefone, nif, endereco, codigo_postal, pais, informacao_adicional, pagamento_default);
         clientes.add(cliente);
         Escreverficheiros.writeToFileCliente(clientes, "Clientes.txt");
-        System.out.println("domain.Cliente criado com sucesso");
+        System.out.println("Cliente criado com sucesso");
         cliente.toString();
 
     }

@@ -66,21 +66,7 @@ public class Licenca {
         Scanner input = new Scanner(System.in);
         System.out.println("Introduza os dados da licença");
         System.out.println("Validade(ano-mês-dia):");
-        try {
-            String validade = input.nextLine();
-
-            // Using parse method to convert the string to LocalDate object
-            LocalDate date = LocalDate.parse(validade, DateTimeFormatter.ISO_DATE);
-
-            // Printing the date object
-            System.out.println(date);
-        }
-        catch (IllegalArgumentException e) {
-            System.out.println("Exception: " + e);
-        }
-        catch (DateTimeParseException e) {
-            System.out.println("Exception: " + e);
-        }
+        String validade = input.nextLine();
         setValidade(validade);
         System.out.println("domain.Utilizador TMA:");
         String utilizadortma = input.nextLine();

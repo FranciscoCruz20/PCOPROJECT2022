@@ -4,6 +4,7 @@ import domain.Cliente;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 //Classe dedicada a ficheiros:
 public class Escreverficheiros {
@@ -74,7 +75,8 @@ public class Escreverficheiros {
         try (FileWriter fileWriter = new FileWriter("Pools.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Pool pool : pools) {
-                printWriter.println();
+                printWriter.println("Nome: " + Pool.getNome() + " " + "Data de criação : " + Pool.getData_criacao() + " " + "Validade : " + Pool.getValidade() + " " + "Validade: " + Pool.getValidade() + " " + "Estado : " + Pool.getEstado() + " " + "Licenças  : " + Pool.getLicencas_disp() );
+
             }
         } catch (Exception e) {
             e.printStackTrace();

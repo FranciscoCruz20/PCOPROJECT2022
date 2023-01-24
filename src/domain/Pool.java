@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Pool {
 
     //Atributos:
-    private String nome;
+    private static String nome;
     private static int max_licencas;
     private static Date data_criacao;
     private static String validade;
@@ -275,7 +275,7 @@ public class Pool {
         Pool.cliente = cliente;
     }
 
-    public String getNome() {
+    public static String getNome() {
         return nome;
     }
 

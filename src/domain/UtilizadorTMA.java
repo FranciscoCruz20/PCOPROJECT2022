@@ -118,9 +118,9 @@ public class UtilizadorTMA {
         System.out.print("Username: ");
         String username = input.nextLine();
         System.out.print("PCC: ");
-        int pcc = input.nextInt();
+        int pcc = Integer.parseInt(input.nextLine());
         System.out.print("HCMID: ");
-        int hcmid = input.nextInt();
+        int hcmid = Integer.parseInt(input.nextLine());
         System.out.println("GDS:");
         String gds = input.nextLine();
         if (verificar_dados_utilizadortma(utilizadorestma, username, pcc, hcmid)) {

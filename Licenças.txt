@@ -1,3 +1,0 @@
-Data de criação: Tue Jan 24 00:11:44 WET 2023Estado: InativaValidade: nullUtilizadorTMA:nullPagamento: falseRenovação: falsePreço 100.0Clientes: null
-Data de criação: Tue Jan 24 00:18:29 WET 2023Estado: InativaValidade: nullUtilizadorTMA:nullPagamento: falseRenovação: falsePreço 100.0Clientes: null
-Data de criação: Tue Jan 24 00:24:57 WET 2023Estado: InativaValidade: nullUtilizadorTMA:qPagamento: falseRenovação: falsePreço 100.0Clientes: domain.Cliente{nome='q', email='q', telefone=1, nif=1, endereco='', codigo_postal='q', pais='q', informacao_adicional='q', pagamento_default='q', gestor=null}

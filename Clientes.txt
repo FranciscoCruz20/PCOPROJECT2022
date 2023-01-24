@@ -4,3 +4,23 @@ Nome: q, Email: q, Telefone: 1, Nif: 1, Endereço: , Código Postal: q, País: q
 
 Nome: q, Email: q, Telefone: 1, Nif: 1, Endereço: , Código Postal: q, País: q, Informação adicional: q, Método de pagamento: q, Gestor: null
 
+Nome: w, Email: w, Telefone: 1, Nif: 1, Endereço: , Código Postal: 1, País: 1, Informação adicional: 1, Método de pagamento: 1, Gestor: null
+
+Nome: q, Email: q, Telefone: 1, Nif: 1, Endereço: , Código Postal: q, País: q, Informação adicional: q, Método de pagamento: q, Gestor: null
+
+Nome: q, Email: q, Telefone: 1, Nif: 1, Endereço: , Código Postal: q, País: q, Informação adicional: q, Método de pagamento: q, Gestor: null
+
+Nome: f, Email: d, Telefone: 1, Nif: 1, Endereço: , Código Postal: 9500, País: p, Informação adicional: p, Método de pagamento: p, Gestor: null
+
+Nome: fran, Email: fran, Telefone: 1234, Nif: 1234, Endereço: dsfsdfgds, Código Postal: , País: fdsaf, Informação adicional: dsa, Método de pagamento: ds, Gestor: null
+
+Nome: asfsda, Email: sfdsdf, Telefone: 132, Nif: 4312, Endereço: DS, Código Postal: , País: DWQAD, Informação adicional: DSAD, Método de pagamento: DS, Gestor: null
+
+Nome: asfsda, Email: sfdsdf, Telefone: 132, Nif: 4312, Endereço: DS, Código Postal: , País: DWQAD, Informação adicional: DSAD, Método de pagamento: DS, Gestor: null
+
+Nome: ASASA, Email: DADD, Telefone: 121, Nif: 2121, Endereço: RUA, Código Postal: , País: Pt, Informação adicional: , Método de pagamento: , Gestor: null
+
+Nome: f, Email: f, Telefone: 1, Nif: 1, Endereço: re, Código Postal: , País: re, Informação adicional: re, Método de pagamento: re, Gestor: null
+
+Nome: e, Email: e, Telefone: 1, Nif: 1, Endereço: re, Código Postal: 98, País: pt, Informação adicional: t, Método de pagamento: r, Gestor: null
+

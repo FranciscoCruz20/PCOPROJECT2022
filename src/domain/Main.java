@@ -19,13 +19,6 @@ public class Main {
     static UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"",false);
     static Pool p = new Pool("", 0,null,null,"",0,false,false,0,null,null,0);
 
-    //domain.Main:
-    //Para aceder como admin:
-    //Username: admin
-    //Password: 12345
-    public static void main(String[] args) throws IOException {
-        Menu.menu_inicial();
-    }
 
 }
 

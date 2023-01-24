@@ -1,7 +1,6 @@
 package app;
 
 import view.Menu;
-
 import java.io.IOException;
 
 public class DSDManager {

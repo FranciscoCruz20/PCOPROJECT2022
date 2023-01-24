@@ -77,6 +77,7 @@ public class Utilizador {
         return false;
     }
 
+
     //Método que muda o  estado de confirmação do email, que por default é false para true;
     public void confirmar_email() {
         setConfrimacao_email(true);
