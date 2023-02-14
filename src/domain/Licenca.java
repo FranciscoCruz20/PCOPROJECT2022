@@ -4,9 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 
 public class Licenca {
@@ -19,14 +16,13 @@ public class Licenca {
     private static boolean pagamento;
     private static boolean renovacao;
     private static float preco;
-    private static Cliente cliente;
-    //private static domain.Pool pool;
-    private static ArrayList<Licenca> licencas = new ArrayList<>();
-    private static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
+    private static String cliente;
+    public static ArrayList<Licenca> licencas = new ArrayList<>();
+    public static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
     private static ArrayList<Cliente> clientes = new ArrayList<>();
 
     //Construtor:
-    public Licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, Cliente cliente) {
+    public Licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente) {
         this.data_criacao = data_criacao;
         this.estado = "Inativa";
         this.validade = validade;
@@ -35,7 +31,6 @@ public class Licenca {
         this.renovacao = false;
         this.preco = 100;
         this.cliente = cliente;
-        //this.pool = pool;
     }
 
     //Metodos para obter data do sistema:
@@ -62,6 +57,11 @@ public class Licenca {
     }
 
     public void criar_licenca() throws FileNotFoundException {
+        LicencaCreator.criarLicenca();
+    }
+
+    /*
+    public void criar_licenca() throws FileNotFoundException {
 
         Scanner input = new Scanner(System.in);
         System.out.println("Introduza os dados da licença");
@@ -77,16 +77,15 @@ public class Licenca {
             if (Cliente.verificar_cliente(cliente)==true) {
                 setCliente(cliente);
                 Date data_criacao = data_criacao();
-                //System.out.println(getValidade() + ", " + getUtilizadortma() + ", " + getCliente() + ", " + getData_criacao() + ", " + getEstado() + ", " + getPagamento() + ", " + getRenovacao() + ", " + getPreco());
                 System.out.println("1-Confirmar licença");
                 String estado = getEstado();
                 int opcao =  input.nextInt();
                 if (opcao == 1) {
-                    Licenca licenca = new Licenca(data_criacao, estado, getValidade(), getUtilizadortma(), getPagamento(), getRenovacao(), getPreco(), getCliente());
-                    licencas.add(licenca);
+                    //LicencaCreator.criarLicenca(data_criacao, estado, getValidade(), getUtilizadortma(), getPagamento(), getRenovacao(), getPreco(), getCliente());
+                    //Licenca licenca = new Licenca(data_criacao, estado, getValidade(), getUtilizadortma(), getPagamento(), getRenovacao(), getPreco(), getCliente());
+                    licencas.add(LicencaCreator.criarLicenca(data_criacao, estado, getValidade(), getUtilizadortma(), getPagamento(), getRenovacao(), getPreco(), getCliente()));
                     Escreverficheiros.writeToFileLicenca(licencas, "Licenças.txt");
                     System.out.println("Licença criada com sucesso");
-                    licenca.toString();
                 }
                 else {
                         System.out.println("Opção inválida");
@@ -99,21 +98,18 @@ public class Licenca {
             System.out.println("Dados inseridos incorretos");
         }
     }
-
-    public void dados_licenca(Date validade, UtilizadorTMA utilizadortma, Cliente cliente) {
-
-    }
+     */
 
     //Getters e Setters:
-    public Cliente getCliente() {
+    public static String getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = Cliente.procurarCliente(cliente);
+    public static void setCliente(String cliente) {
+        Licenca.cliente = cliente;
     }
 
-    public  float getPreco() {
+    public static float getPreco() {
         return preco;
     }
 
@@ -121,7 +117,7 @@ public class Licenca {
         this.preco = preco;
     }
 
-    public  boolean getRenovacao() {
+    public static boolean getRenovacao() {
         return renovacao;
     }
 
@@ -129,7 +125,7 @@ public class Licenca {
         this.renovacao = renovacao;
     }
 
-    public  boolean getPagamento() {
+    public static boolean getPagamento() {
         return pagamento;
     }
 
@@ -137,23 +133,23 @@ public class Licenca {
         this.pagamento = pagamento;
     }
 
-    public String getUtilizadortma() {
+    public static String getUtilizadortma() {
         return utilizadortma;
     }
 
-    public void setUtilizadortma(String utilizadortma) {
-        this.utilizadortma = utilizadortma;
+    public static void setUtilizadortma(String utilizadortma) {
+        Licenca.utilizadortma = utilizadortma;
     }
 
-    public String getValidade() {
+    public static String getValidade() {
         return validade;
     }
 
-    public void setValidade(String validade) {
-        this.validade = validade;
+    public static void setValidade(String validade) {
+        Licenca.validade = validade;
     }
 
-    public  String getEstado() {
+    public static String getEstado() {
         return estado;
     }
 

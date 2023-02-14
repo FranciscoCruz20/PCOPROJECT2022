@@ -43,11 +43,26 @@ public class Pool {
         this.preco = 0;
         this.cliente = cliente;
         this.licencas_usadas = 0;
+        this.licencas = new ArrayList<>();
 
     }
 
+    public void adicionarLicença(Licenca licença) {
+        licencas.add(licença);
+    }
+
+
+    /*
+    public void adicionarLicença(Licenca licença) {
+        if (licencas.size() < max_licencas) {
+            licencas.add(licença);
+        } else {
+            System.out.println("A pool já está cheia!");
+        }
+    }
+    */
+
     public static void confirmar_pool_licenca() {
-        adicionar_licenca_pool(licenca);
         setLicencas_disp(licencas_disp--);
         setLicencas_usadas(licencas_usadas++);
     }
@@ -103,7 +118,7 @@ public class Pool {
                 Pool pool = new Pool(nome, max_licencas, data_criacao, getValidade(), getEstado(), getLicencas_disp(), getEstado_pagamento(), getRenovacao(), getPreco(), getCliente(), getLicencas(), getLicencas_usadas());
                 pools.add(pool);
                 Escreverficheiros.writeToFilePool(pools, "Pools.txt");
-                System.out.println("domain.Pool criada com sucesso");
+                System.out.println("Pool criada com sucesso");
                 pool.toString();
             }
         }
@@ -143,11 +158,6 @@ public class Pool {
         }
     }
 
-    public static void adicionar_licenca_pool(Licenca licenca) {
-        licencas.add(licenca);
-        Escreverficheiros.writeToFileLicenca(licencas, "Licenças.txt");
-    }
-
     public void remover_licenca(Pool pool) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         System.out.println("Selecionar licença");
@@ -156,13 +166,6 @@ public class Pool {
         licencas.remove(pool);
 
         }
-    }
-
-
-    //Metodos para obter data do sistema:
-    public void obter_data() {
-        Date data = new Date();
-        System.out.println("Data: "+ data.toString());
     }
 
     public static Date data_criacao() {
@@ -175,8 +178,6 @@ public class Pool {
 
 
     //Getters e Setters:
-
-
     public static int getLicencas_usadas() {
         return licencas_usadas;
     }
@@ -186,7 +187,6 @@ public class Pool {
     }
 
     public static int getMax_licencas() {
-
         return max_licencas;
     }
 

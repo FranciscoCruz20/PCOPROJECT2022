@@ -1,10 +1,7 @@
 package domain;
 
-import domain.Cliente;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 //Classe dedicada a ficheiros:
 public class Escreverficheiros {
@@ -63,7 +60,7 @@ public class Escreverficheiros {
         try (FileWriter fileWriter = new FileWriter("Licenças.txt",true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Licenca licenca : licencas) {
-                printWriter.println("Data de criação: " + licenca.getData_criacao() + "Estado: " + licenca.getEstado() + "Validade: " + licenca.getValidade() + "domain.UtilizadorTMA:" + licenca.getUtilizadortma() + "Pagamento: " + licenca.getPagamento() + "Renovação: " + licenca.getRenovacao() + "Preço " + licenca.getPreco() + "Clientes: " + licenca.getCliente());
+                printWriter.println("Data de criação: " + licenca.getData_criacao() + "Estado: " + licenca.getEstado() + "Validade: " + licenca.getValidade() + "domain.UtilizadorTMA:" + licenca.getUtilizadortma() + "Pagamento: " + licenca.getPagamento() + "Renovação: " + Licenca.getRenovacao() + "Preço " + licenca.getPreco() + "Clientes: " + licenca.getCliente());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,7 +72,7 @@ public class Escreverficheiros {
         try (FileWriter fileWriter = new FileWriter("Pools.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Pool pool : pools) {
-                printWriter.println("Nome: " + Pool.getNome() + " " + "Data de criação : " + Pool.getData_criacao() + " " + "Validade : " + Pool.getValidade() + " " + "Validade: " + Pool.getValidade() + " " + "Estado : " + Pool.getEstado() + " " + "Licenças  : " + Pool.getLicencas_disp() );
+                printWriter.println("Nome: " + Pool.getNome() + " " + "Data de criação : " + Pool.getData_criacao() + " " + "Validade : " + Pool.getValidade() + " " + "Estado : " + Pool.getEstado() + " " + "Licenças  : " + Pool.getLicencas_disp() + " " + "Número máximo de licanças: " + Pool.getMax_licencas() + " " + "Licenças disponíveis: " + Pool.getLicencas_disp() + " " + "Licenças usadas: " + Pool.getLicencas_usadas() );
 
             }
         } catch (Exception e) {

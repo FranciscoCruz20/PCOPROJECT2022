@@ -24,7 +24,7 @@ public class Cliente {
 
 
    //Verificar se o nome do cliente está na lista de clientes:
-   public static boolean verificar_cliente(String nome_cliente) {
+   public static boolean verificar_cliente(String nome) {
        for(Cliente cliente : clientes) {
            try {
                //Leitura do ficheiro;
@@ -33,7 +33,7 @@ public class Cliente {
                String line;
                //Verificação em linha:
                while ((line = br.readLine()) != null) {
-                   if (line.contains(nome_cliente)) {
+                   if (line.contains(nome)) {
                        return true;
                    }
                }

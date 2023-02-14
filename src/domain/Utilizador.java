@@ -12,12 +12,11 @@ public class Utilizador {
     //Atributos:
     private String nome;
     private String email;
-    private String cliente;
     private String funcao;
     private boolean confrimacao_email;
     private String password;
     private static ArrayList<String> utilizadores = new ArrayList<String>();
-    private static ArrayList<Utilizador> clientes = new ArrayList<>();
+
 
     //Construtor:
     public Utilizador(String nome, String email, String funcao, String password) {
@@ -83,11 +82,6 @@ public class Utilizador {
         setConfrimacao_email(true);
     }
 
-    //Adicionar clientes a lista;
-    public static void adicionar_cliente(Utilizador client) {
-        clientes.add(client);
-    }
-
     //Getters e setters:
 
     public String getPassword() {
@@ -106,28 +100,12 @@ public class Utilizador {
         this.confrimacao_email = confrimacao_email;
     }
 
-    public static List<Utilizador> getClientes() {
-        return clientes;
-    }
-
-    public static void setClientes(List<Utilizador> clientes) {
-        Utilizador.clientes = (ArrayList<Utilizador>) clientes;
-    }
-
     public String getFuncao() {
         return funcao;
     }
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
     }
 
     public String getEmail() {

@@ -24,3 +24,11 @@ Nome: f, Email: f, Telefone: 1, Nif: 1, Endereço: re, Código Postal: , País: 
 
 Nome: e, Email: e, Telefone: 1, Nif: 1, Endereço: re, Código Postal: 98, País: pt, Informação adicional: t, Método de pagamento: r, Gestor: null
 
+Nome: andre, Email: andre, Telefone: 1234, Nif: 1234, Endereço: rua, Código Postal: 123, País: pt, Informação adicional: nao, Método de pagamento: mbway, Gestor: null
+
+Nome: a, Email: a, Telefone: 1, Nif: 1, Endereço: a, Código Postal: 1, País: a, Informação adicional: a, Método de pagamento: a, Gestor: null
+
+Nome: w, Email: w, Telefone: 1, Nif: 1, Endereço: w, Código Postal: 1, País: w, Informação adicional: w, Método de pagamento: w, Gestor: null
+
+Nome: r, Email: r, Telefone: 1, Nif: 1, Endereço: r, Código Postal: 1, País: r, Informação adicional: r, Método de pagamento: r, Gestor: null
+
