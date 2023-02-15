@@ -17,15 +17,13 @@ public class UtilizadorTMA {
     private int pcc;
     private int hcmid;
     private String gds;
-    private Date data_criacao;
-    private Date data_ultima_alteracao;
-    private static String estado;
-    private boolean licenca;
-    private ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<>();
-    private static ArrayList<Licenca> licencas = new ArrayList<>();
+    public static Date data_criacao;
+    public static Date data_ultima_alteracao;
+    public static String estado;
+    public static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<>();
 
     //Construtor:
-    public UtilizadorTMA(String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado,boolean licenca) {
+    public UtilizadorTMA(String username, int pcc, int hcmid, String gds, Date data_criacao, Date data_ultima_alteracao, String estado) {
         this.username = username;
         this.pcc = pcc;
         this.hcmid = hcmid;
@@ -33,20 +31,24 @@ public class UtilizadorTMA {
         this.data_criacao = data_criacao;
         this.data_ultima_alteracao = data_ultima_alteracao;
         this.estado = "Inativo";
-        this.licenca = false;
+
     }
 
-    //Metodos para obter data do sistema:
-    public void obter_data() {
-        Date data = new Date();
-        System.out.println("A data atual é "+ data.toString());
-    }
-
-    public  void data_criacao() {
-        this.data_criacao = new Date();
+    /**
+     * Método que obtem a data de criação do utilziadortma
+     */
+    public static void data_criacao() {
+        UtilizadorTMA.data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
     }
 
+    /**
+     * Método que verifica a existência de um utilizadortma na lista dos mesmos e no ficheiro txt onde estão guardados os seus dados
+     * @param utilizadorestma
+     * @param nome
+     * @return estado de verificação
+     * @throws FileNotFoundException
+     */
     public static boolean verificar_utilizadortma(ArrayList<UtilizadorTMA> utilizadorestma, String nome) throws FileNotFoundException {
         for(UtilizadorTMA utilizadortma : utilizadorestma) {
             try {
@@ -69,6 +71,16 @@ public class UtilizadorTMA {
         return true;
     }
 
+    //Information Expert, tem a responsabilidade de vferificar os dados do utilizadortma, já que esta classe contèm toda a informação necessária
+    /**
+     * Método que verifica a existência de um utilizadortma na lista dos mesmos e no ficheiro txt onde estão guardados os seus dados
+     * @param utilizadorestma
+     * @param nome
+     * @param pcc
+     * @param hcmid
+     * @return estado de verificação
+     * @throws FileNotFoundException
+     */
     public static boolean verificar_dados_utilizadortma(ArrayList<UtilizadorTMA> utilizadorestma, String nome, int pcc, int hcmid) throws FileNotFoundException {
         for(UtilizadorTMA utilizadortma : utilizadorestma) {
             try {
@@ -91,151 +103,156 @@ public class UtilizadorTMA {
         return false;
     }
 
-    public static boolean verificar_licencas(ArrayList<UtilizadorTMA> utilizadorestma, ArrayList licencas) throws FileNotFoundException {
-        for(UtilizadorTMA utilizadortma : utilizadorestma) {
-            try {
-                //Leitura do ficheiro;
-                FileReader fr = new FileReader("UtilizadoresTMA.txt");
-                BufferedReader br = new BufferedReader(fr);
-                String line;
-                //Verificação em linha:
-                while ((line = br.readLine()) != null) {
-                    if (line.contains((CharSequence) licencas)) {
-                        return true;
-                    }
-                }
-                return false;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-        return false;
-    }
-    public void inserir_dados_tma() throws IOException {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Insira o username, pcc(inteiro), hcmid(inteiro) e gds(string):");
-        System.out.print("Username: ");
-        String username = input.nextLine();
-        System.out.print("PCC: ");
-        int pcc = Integer.parseInt(input.nextLine());
-        System.out.print("HCMID: ");
-        int hcmid = Integer.parseInt(input.nextLine());
-        System.out.println("GDS:");
-        String gds = input.nextLine();
-        if (verificar_dados_utilizadortma(utilizadorestma, username, pcc, hcmid)) {
-            System.out.println("domain.UtilizadorTMA com esse username,pcc e hcmid já existe");
-            inserir_dados_tma();
-        }
-        else {
-            System.out.println("1-Confirmar criação de utilizadorTMA");
-            System.out.println("2-Sair");
-            int opcao = input.nextInt();
-            if (opcao == 1) {
-                data_criacao();
-                this.data_ultima_alteracao = data_criacao;
-                UtilizadorTMA utilTMA = new UtilizadorTMA(username, pcc, hcmid, gds, data_criacao, data_ultima_alteracao, estado, licenca);
-                confirmar_criacao_tma(utilTMA);
-            }
-            else if (opcao == 2) {
-                Menu.menu_utilizador();
-            }
-            else {
-                System.out.println("Opção inválida");
-            }
-        }
+    /**
+     * Método que chama método creator de objetos do tipo UtilziadorTMA
+     * @throws IOException
+     */
+    public static void inserir_dados_tma() throws IOException {
+        UtilizadorTMACreator.criar_utilizadortma();
     }
 
-    public void confirmar_criacao_tma(UtilizadorTMA utilTMA) {
+
+    /**
+     * Método que adiciona o utilziadortma a lista dos mesmos
+     * Escreve os dados do utilziadortma no ficheiro txt
+     * @param utilTMA
+     */
+    public static void confirmar_criacao_tma(UtilizadorTMA utilTMA) {
         utilizadorestma.add(utilTMA);
         Escreverficheiros.writeToFileUtilizadorTMA(utilizadorestma, "UtilizadoresTMA");
-        System.out.println("domain.UtilizadorTMA criado com sucesso");
+        System.out.println("UtilizadorTMA criado com sucesso");
 
-    }
-
-    public void criar_utilizadorTMA() throws IOException {
-        inserir_dados_tma();
     }
 
     //Getters e Setters:
 
+    /**
+     *
+     * @return lista de utilizadorestma
+     */
     public ArrayList<UtilizadorTMA> getUtilizadorestma() {
         return utilizadorestma;
     }
 
+    /**
+     *
+     * @param utilizadorestma
+     */
     public void setUtilizadorestma(ArrayList<UtilizadorTMA> utilizadorestma) {
         this.utilizadorestma = utilizadorestma;
     }
 
+    /**
+     *
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return PCC
+     */
     public int getPcc() {
         return pcc;
     }
 
+    /**
+     *
+     * @param pcc
+     */
     public void setPcc(int pcc) {
         this.pcc = pcc;
     }
 
+    /**
+     *
+     * @return HCMID
+     */
     public int getHcmid() {
         return hcmid;
     }
 
+    /**
+     *
+     * @param hcmid
+     */
     public void setHcmid(int hcmid) {
         this.hcmid = hcmid;
     }
 
+    /**
+     *
+     * @return GDS
+     */
     public String getGds() {
         return gds;
     }
 
+    /**
+     *
+     * @param gds
+     */
     public void setGds(String gds) {
         this.gds = gds;
     }
 
+    /**
+     *
+     * @return data de criação do utilizadortma
+     */
     public Date getData_criacao() {
         return data_criacao;
     }
 
+    /**
+     *
+     * @param data_criacao
+     */
     public void setData_criacao(Date data_criacao) {
         this.data_criacao = data_criacao;
     }
 
+    /**
+     *
+     * @return data da ultima alteração do utilizadortma
+     */
     public Date getData_ultima_alteracao() {
         return data_ultima_alteracao;
     }
 
+    /**
+     *
+     * @param data_ultima_alteracao
+     */
     public void setData_ultima_alteracao(Date data_ultima_alteracao) {
         this.data_ultima_alteracao = data_ultima_alteracao;
     }
 
+    /**
+     *
+     * @return estado
+     */
     public static String getEstado() {
         return estado;
     }
 
+    /**
+     *
+     * @param estado
+     */
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public static ArrayList<Licenca> getLicencas() {
-        return licencas;
-    }
 
-    public void setLicencas(ArrayList<Licenca> licencas) {
-        this.licencas = licencas;
-    }
-
-    public boolean getLicenca() {
-        return licenca;
-    }
-
-    public void setLicenca(boolean licenca) {
-        this.licenca = licenca;
-    }
 }

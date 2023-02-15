@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-
+/**
+ * Classe das licenças;
+ */
 public class Licenca {
 
     //Atributos:
@@ -33,18 +35,27 @@ public class Licenca {
         this.cliente = cliente;
     }
 
-    //Metodos para obter data do sistema:
+    /**
+     * Método que obtem a data do sistema;
+     */
     public void obter_data() {
         Date data = new Date();
         System.out.println("A hora do sitema é "+ data.toString());
     }
 
+    /**
+     * Método que define a data de criação da licença;
+     * @return data de criação da licença;
+     */
     public static Date data_criacao() {
         Date data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
         return data_criacao;
     }
 
+    /**
+     * Método que permite alterar imformação da licença;
+     */
     public void alterar_licenca() {
         Scanner input = new Scanner(System.in);
         this.toString();
@@ -56,7 +67,11 @@ public class Licenca {
         this.toString();
     }
 
-    public void criar_licenca() throws FileNotFoundException {
+    /**
+     * Método que chama o creator da classe Licenca;
+     * @throws FileNotFoundException
+     */
+    public static void criar_licenca() throws FileNotFoundException {
         LicencaCreator.criarLicenca();
     }
 
@@ -101,70 +116,139 @@ public class Licenca {
      */
 
     //Getters e Setters:
+
+    /**
+     *
+     * @return cliente
+     */
     public static String getCliente() {
         return cliente;
     }
 
+    /**
+     *
+     * @param cliente
+     */
     public static void setCliente(String cliente) {
         Licenca.cliente = cliente;
     }
 
+    /**
+     *
+     * @return preço da licença
+     */
     public static float getPreco() {
         return preco;
     }
 
+    /**
+     *
+     * @param preco
+     */
     public void setPreco(float preco) {
         this.preco = preco;
     }
 
+    /**
+     *
+     * @return estado da renovação
+     */
     public static boolean getRenovacao() {
         return renovacao;
     }
 
+    /**
+     *
+     * @param renovacao
+     */
     public void setRenovacao(boolean renovacao) {
         this.renovacao = renovacao;
     }
 
+    /**
+     *
+     * @return estado do pagamento
+     */
     public static boolean getPagamento() {
         return pagamento;
     }
 
+    /**
+     *
+     * @param pagamento
+     */
     public void setPagamento(boolean pagamento) {
         this.pagamento = pagamento;
     }
 
+    /**
+     *
+     * @return utilizadortma
+     */
     public static String getUtilizadortma() {
         return utilizadortma;
     }
 
+    /**
+     *
+     * @param utilizadortma
+     */
     public static void setUtilizadortma(String utilizadortma) {
         Licenca.utilizadortma = utilizadortma;
     }
 
+    /**
+     *
+     * @return validade da licença
+     */
     public static String getValidade() {
         return validade;
     }
 
+    /**
+     *
+     * @param validade
+     */
     public static void setValidade(String validade) {
         Licenca.validade = validade;
     }
 
+    /**
+     *
+     * @return estado da licença
+     */
     public static String getEstado() {
         return estado;
     }
 
+    /**
+     *
+     * @param estado
+     */
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
+    /**
+     *
+     * @return data de criação da licença
+     */
     public  Date getData_criacao() {
         return data_criacao;
     }
 
+    /**
+     *
+     * @param data_criacao
+     */
     public void setData_criacao(Date data_criacao) {
         this.data_criacao = data_criacao;
     }
 
+    /**
+     *
+     * @return dados da licença
+     */
     public String toString() {
         return "domain.Licenca{" +
                 "data_criacao=" + data_criacao +

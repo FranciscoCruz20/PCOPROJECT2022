@@ -1,15 +1,10 @@
 package domain;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-
 public class Administrador {
 
     //Atributos:
-    private String username;
-    private String password;
-    //private ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();//Lista de utilizadores criados;
+    private static String username;
+    private static String password;
 
     //Construtor:
     public Administrador(String admin, String password) {
@@ -18,24 +13,46 @@ public class Administrador {
         this.password = "12345";
     }
 
-    //Verificação dos valores dos atributos de administrador, comparação dos inputs com os valores do construtor;
-    public boolean login(String username, String password) {
-        return this.username.equals(username) && this.password.equals(password);
+    /**
+     * Método que faz a verificação das credenciais do administrador
+     * @param username
+     * @param password
+     * @return estado de login
+     */
+    public static boolean login(String username, String password) {
+        return Administrador.username.equals(username) && Administrador.password.equals(password);
     }
 
     //Getters e setters:
+
+    /**
+     *
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }

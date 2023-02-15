@@ -4,8 +4,18 @@ import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * Classe creator de licenças, cria objetos do tipo Licenca com os devidos inputs;
+ */
 public class LicencaCreator {
 
+    /**
+     *
+     * Método que cria objetos do tipo Licenca onde os inputs são associados aos atributos de licenca;
+     * Para além da criação do objeto, este é guardado numa lista de objetos do mesmo tipo e guardado num ficheiro txt.;
+     * @return objeto do tipo Licenca;
+     * @throws FileNotFoundException
+     */
     public static Licenca criarLicenca() throws FileNotFoundException {
 
         Scanner input = new Scanner(System.in);

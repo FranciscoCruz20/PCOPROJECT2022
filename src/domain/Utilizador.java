@@ -5,17 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Utilizador {
 
     //Atributos:
     private String nome;
-    private String email;
-    private String funcao;
-    private boolean confrimacao_email;
-    private String password;
-    private static ArrayList<String> utilizadores = new ArrayList<String>();
+    private static String email;
+    private static String funcao;
+    private static boolean confrimacao_email;
+    private static String password;
+    public static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
 
 
     //Construtor:
@@ -27,8 +26,20 @@ public class Utilizador {
         this.password = password;
     }
 
-    //verificar a existência do nome inserido na lista de utilizadores no ficheiro txt;
-    public static boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException {
+    /**
+     * Método que chama o método criador de objetos do tipo Utilziador na classe creator de Utilziador
+     */
+    public static void criar_utilizador() throws FileNotFoundException {
+        UtilizadorCreator.criar_utilizador();
+    }
+
+    /**
+     * Verificar a existência do nome inserido na lista de utilizadores no ficheiro txt
+     * @param utilizadores
+     * @param nome
+     * @return estado de verificação do utilizador
+     */
+    public static boolean verificar_utilizador(ArrayList<Utilizador> utilizadores, String nome) throws FileNotFoundException{
         for(Utilizador utilizador : utilizadores) {
             try {
                 //Leitura do ficheiro;
@@ -50,9 +61,15 @@ public class Utilizador {
         return false;
     }
 
-
-    //Verificar se o nome está dentro do ficheiro de utilizadres:
-    public static boolean verificar_utilizador_confirmar(ArrayList<Utilizador> utilizadores, String nome, String email) throws FileNotFoundException {
+    /**
+     * Verificar se o nome está dentro do ficheiro de utilizadores
+     * @param utilizadores
+     * @param nome
+     * @param password
+     * @return estado de verificação do utilizador
+     * @throws FileNotFoundException
+     */
+    public static boolean verificar_utilizador_confirmar(ArrayList<Utilizador> utilizadores, String nome, String password) throws FileNotFoundException {
         for(Utilizador utilizador : utilizadores) {
             try {
                 FileReader fr = new FileReader("Utilizadores.txt");
@@ -61,7 +78,7 @@ public class Utilizador {
                 //Verificação em linha:
                 while ((line = br.readLine()) != null) {
                     if (line.contains(nome)) {
-                        if (line.contains(email)) {
+                        if (line.contains(password)) {
                             return true;
                         }
                     }
@@ -77,50 +94,86 @@ public class Utilizador {
     }
 
 
-    //Método que muda o  estado de confirmação do email, que por default é false para true;
-    public void confirmar_email() {
-        setConfrimacao_email(true);
-    }
-
     //Getters e setters:
 
-    public String getPassword() {
+    /**
+     *
+     * @return password do utilizador
+     */
+    public static String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return estado de confirmação de email
+     */
     public boolean getConfrimacao_email() {
         return confrimacao_email;
     }
 
-    public void setConfrimacao_email(boolean confrimacao_email) {
-        this.confrimacao_email = confrimacao_email;
+    /**
+     *
+     * @param confrimacao_email
+     */
+    public static void setConfrimacao_email(boolean confrimacao_email) {
+        Utilizador.confrimacao_email = confrimacao_email;
     }
 
-    public String getFuncao() {
+    /**
+     *
+     * @return função do utilziador
+     */
+    public static String getFuncao() {
         return funcao;
     }
 
+    /**
+     *
+     * @param funcao
+     */
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
 
-    public String getEmail() {
+    /**
+     *
+     * @return email do utilziador
+     */
+    public static String getEmail() {
         return email;
     }
 
-    public void setEmail() {
+    /**
+     *
+     * @param email
+     */
+    public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return nome do utilizador
+     */
     public String getNome() {
         return nome;
     }
 
-    public void setNome() {
+    /**
+     *
+     * @param nome
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
 

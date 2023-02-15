@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +25,7 @@ public class Pool {
     private static Licenca licenca;
     private static int licencas_usadas;
     private static ArrayList<Licenca> licencas = new ArrayList<>();
-    private static ArrayList<Pool> pools = new ArrayList<>();
+    public static ArrayList<Pool> pools = new ArrayList<>();
 
     //Construtor:
     public Pool(String nome, int max_licencas, Date data_criacao, String validade, String estado,int licencas_disp, boolean estado_pagamento, boolean renovacao, float preco,Cliente cliente, List licencas, int licencas_usadas) {
@@ -62,6 +59,10 @@ public class Pool {
     }
     */
 
+    public static void criar_pool() throws FileNotFoundException {
+        PoolCreator.criar_pool();
+    }
+    /*
     public static void confirmar_pool_licenca() {
         setLicencas_disp(licencas_disp--);
         setLicencas_usadas(licencas_usadas++);
@@ -124,6 +125,9 @@ public class Pool {
         }
     }
 
+     */
+
+
     public static boolean verificar_pool(ArrayList<Pool> pools, String nome) throws FileNotFoundException {
         for(Pool pool : pools) {
             try {
@@ -146,6 +150,7 @@ public class Pool {
         return true;
     }
 
+    /*
     public static void escolher_pool(String pool) {
         //Selecionar pool
         if (pools.contains(pool)) {
@@ -157,6 +162,8 @@ public class Pool {
             }
         }
     }
+
+     */
 
     public void remover_licenca(Pool pool) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);

@@ -6,6 +6,11 @@ import java.util.ArrayList;
 //Classe dedicada a ficheiros:
 public class Escreverficheiros {
 
+    /**
+     *
+     * @param filePath
+     * @return ArrayList
+     */
     private static ArrayList<String> readFile(String filePath) {
         ArrayList<String> lines = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -19,7 +24,12 @@ public class Escreverficheiros {
         return lines;
     }
 
-    //Escreve no ficheiro selecionado a lista de utilizadores criados;
+
+    /**
+     * Método que escreve os dados dos utilizadores num ficheiro txt. especifico
+     * @param utilizadores
+     * @param fileName
+     */
     public static void writeToFile(ArrayList<Utilizador> utilizadores, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Utilizadores.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -31,19 +41,27 @@ public class Escreverficheiros {
         }
     }
 
-    //Escreve no ficheiro selecionado a lista de utilizadores criados;
+    /**
+     * Método que escreve os dados dos utilizadorestma num ficheiro txt. especifico
+     * @param utilizadorestma
+     * @param fileName
+     */
     public static void writeToFileUtilizadorTMA(ArrayList<UtilizadorTMA> utilizadorestma, String fileName) {
         try (FileWriter fileWriter = new FileWriter("UtilizadoresTMA.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (UtilizadorTMA utilizadortma : utilizadorestma) {
-                printWriter.println("Username: " +utilizadortma.getUsername() + ", PCC: " + utilizadortma.getPcc() + ", HCMID: " + utilizadortma.getHcmid() + ", Estado: " + utilizadortma.getEstado() + ", Data de criação: " + utilizadortma.getData_criacao() + ", Data da última alteração: " + utilizadortma.getData_ultima_alteracao() + ", Licença : " + utilizadortma.getLicenca() + "\n");
+                printWriter.println("Username: " +utilizadortma.getUsername() + ", PCC: " + utilizadortma.getPcc() + ", HCMID: " + utilizadortma.getHcmid() + ", Estado: " + utilizadortma.getEstado() + ", Data de criação: " + utilizadortma.getData_criacao() + ", Data da última alteração: " + utilizadortma.getData_ultima_alteracao() + "\n");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    //Escreve no ficheiro selecionado a lista de clientes criados;
+    /**
+     * Método que escreve os dados dos clientes num ficheiro txt. especifico
+     * @param clientes
+     * @param fileName
+     */
     public static void writeToFileCliente(ArrayList<Cliente> clientes, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Clientes.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -55,7 +73,11 @@ public class Escreverficheiros {
         }
     }
 
-    //Escreve no ficheiro selecionado a lista de licenças criados;
+    /**
+     * Método que escreve os dados das licenças num ficheiro txt. especifico
+     * @param licencas
+     * @param fileName
+     */
     public static void writeToFileLicenca(ArrayList<Licenca> licencas, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Licenças.txt",true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -67,7 +89,11 @@ public class Escreverficheiros {
         }
     }
 
-    //Escreve no ficheiro selecionado a lista de pools criados;
+    /**
+     * Método que escreve os dados das pools num ficheiro txt. especifico
+     * @param pools
+     * @param fileName
+     */
     public static void writeToFilePool(ArrayList<Pool> pools, String fileName) {
         try (FileWriter fileWriter = new FileWriter("Pools.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -80,6 +106,13 @@ public class Escreverficheiros {
         }
     }
 
+    /**
+     * Método que permite alteração de dados das licenças no ficheiro txt.
+     * @param licencas
+     * @param filename
+     * @param parametro
+     * @param alteracao
+     */
     public static void alterar_ficheiros_licencas(ArrayList<Licenca> licencas, String filename, String parametro, String alteracao) {
         // Caminho do arquivo
         String filePath = "Licenças.txt";
