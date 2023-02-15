@@ -1,9 +1,6 @@
 package domain;
 
-import view.Menu;
-
 import java.io.IOException;
-import java.util.Scanner;
 
 public class UtilizadorTMACreator {
 

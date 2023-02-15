@@ -15,44 +15,22 @@ public class LicencaCreator {
      * Para além da criação do objeto, este é guardado numa lista de objetos do mesmo tipo e guardado num ficheiro txt.;
      * @return objeto do tipo Licenca;
      * @throws FileNotFoundException
+     * @param data_criacao
+     * @param estado
+     * @param validade
+     * @param utilizadortma
+     * @param pagamento
+     * @param renovacao
+     * @param preco
+     * @param cliente
      */
-    public static Licenca criarLicenca() throws FileNotFoundException {
+    public static Licenca criarLicenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente) throws FileNotFoundException {
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Introduza os dados da licença");
-        System.out.println("Validade(ano-mês-dia):");
-        String validade = input.nextLine();
-        Licenca.setValidade(validade);
-        System.out.println("domain.Utilizador TMA:");
-        String utilizadortma = input.nextLine();
-        Date data_criacao = null;
-        String estado = null;
-        if (HandlerUC06.verificar_utilizadortma(Licenca.utilizadorestma, utilizadortma)) {
-            Licenca.setUtilizadortma(utilizadortma);
-            System.out.println("domain.Cliente:");
-            String cliente = input.nextLine();
-            if (Cliente.verificar_cliente(cliente) == true) {
-                Licenca.setCliente(cliente);
-                data_criacao = Licenca.data_criacao();
-                System.out.println("1-Confirmar licença");
-                estado = Licenca.getEstado();
-                int opcao = input.nextInt();
-                if (opcao == 1) {
-                    Licenca licenca = new Licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
-                    Licenca.licencas.add(licenca);
-                    //return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(),  Licenca.getCliente());
-                    Escreverficheiros.writeToFileLicenca(Licenca.licencas, "Licenças.txt");
-                    System.out.println("Licença criada com sucesso");
-                } else {
-                    System.out.println("Opção inválida");
-                }
-            } else {
-                System.out.println("Dados inseridos incorretos");
-            }
-        } else {
-            System.out.println("Dados inseridos incorretos");
-        }
-
+        Licenca licenca = new Licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
+        Licenca.licencas.add(licenca);
+        //return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(),  Licenca.getCliente());
+        Escreverficheiros.writeToFileLicenca(Licenca.licencas, "Licenças.txt");
+        System.out.println("Licença criada com sucesso");
         return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
     }
 

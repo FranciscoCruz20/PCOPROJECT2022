@@ -158,13 +158,13 @@ public class Menu {
             input.nextLine();
 
             if (opcao == 1) {
-                Licenca.criar_licenca();
+                HandlerUC04.criar_licenca();
             }
             else if (opcao == 2){
                 HandlerUC06.inserir_dados_tma();
             }
             else if (opcao == 3) {
-                HandlerUC04.criar_pool();
+                Pool.criar_pool();
             }
             else if (opcao == 4) {
                 menu_inicial();

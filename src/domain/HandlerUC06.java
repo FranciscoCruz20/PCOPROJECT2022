@@ -1,7 +1,6 @@
 package domain;
 
 import view.Menu;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,6 +9,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * Information Expert
+ * Tem a responsabilidade sobre o caso de uso UC06
+ * Este Information Expert sugere que a responsabilidade de executar uma ação sobre o caso de uso 6
+ * deve ser atribuída ao objeto que possui a informação necessária para executá-la.
+ * Neste caso esta classe tem como responsabilidade os inputs dos valores dos atríbutos da classe UtilizadorTMA.
+ * E a confirmação de craição de um utilizadortma com os respetidos valores atribuidos.
+ * E sugere a responsabilidade de criação do objeto do tipo UtilizadorTMA para a classe UtilizadorTMACreator.
+ */
 public class HandlerUC06 {
 
     /**
@@ -43,6 +51,14 @@ public class HandlerUC06 {
         return false;
     }
 
+    /**
+     * Método que confirma a criação de um novo utilizadortma com valores já atribuidos aos seus atributos
+     * @param username
+     * @param pcc
+     * @param hcmid
+     * @param gds
+     * @throws IOException
+     */
     public static void confirmacao_tma(String username, int pcc, int hcmid, String gds) throws IOException {
         Scanner input = new Scanner(System.in);
         System.out.println("1-Confirmar criação de utilizadorTMA");
