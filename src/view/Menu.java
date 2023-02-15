@@ -1,10 +1,6 @@
 package view;
-import domain.Cliente;
-import domain.Utilizador;
-import domain.Administrador;
-import domain.Licenca;
-import domain.Pool;
-import domain.UtilizadorTMA;
+import domain.*;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -165,10 +161,10 @@ public class Menu {
                 Licenca.criar_licenca();
             }
             else if (opcao == 2){
-                UtilizadorTMA.inserir_dados_tma();
+                HandlerUC06.inserir_dados_tma();
             }
             else if (opcao == 3) {
-                Pool.criar_pool();
+                HandlerUC04.criar_pool();
             }
             else if (opcao == 4) {
                 menu_inicial();

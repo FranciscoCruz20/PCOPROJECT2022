@@ -3,8 +3,8 @@ package domain;
 public class Administrador {
 
     //Atributos:
-    private static String username;
-    private static String password;
+    private static String username = "admin";
+    private static String password = "12345";
 
     //Construtor:
     public Administrador(String admin, String password) {

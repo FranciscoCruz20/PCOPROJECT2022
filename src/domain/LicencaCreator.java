@@ -27,7 +27,7 @@ public class LicencaCreator {
         String utilizadortma = input.nextLine();
         Date data_criacao = null;
         String estado = null;
-        if (UtilizadorTMA.verificar_utilizadortma(Licenca.utilizadorestma, utilizadortma)) {
+        if (HandlerUC06.verificar_utilizadortma(Licenca.utilizadorestma, utilizadortma)) {
             Licenca.setUtilizadortma(utilizadortma);
             System.out.println("domain.Cliente:");
             String cliente = input.nextLine();
