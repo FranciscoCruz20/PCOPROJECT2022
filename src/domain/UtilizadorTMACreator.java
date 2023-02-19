@@ -2,6 +2,9 @@ package domain;
 
 import java.io.IOException;
 
+/**
+ * Classe creatro responsável por criar objetos do tipo UtilizadorTMA
+ */
 public class UtilizadorTMACreator {
 
     /**

@@ -3,6 +3,9 @@ package app;
 import view.Menu;
 import java.io.IOException;
 
+/**
+ * Classe responsável pelo arranque do sistema
+ */
 public class TMAManager {
 
     /**

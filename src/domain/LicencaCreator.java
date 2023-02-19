@@ -2,7 +2,6 @@ package domain;
 
 import java.io.FileNotFoundException;
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  * Classe creator de licenças, cria objetos do tipo Licenca com os devidos inputs;
@@ -28,7 +27,6 @@ public class LicencaCreator {
 
         Licenca licenca = new Licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
         Licenca.licencas.add(licenca);
-        //return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(),  Licenca.getCliente());
         Escreverficheiros.writeToFileLicenca(Licenca.licencas, "Licenças.txt");
         System.out.println("Licença criada com sucesso");
         return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());

@@ -32,3 +32,5 @@ Nome: w, Email: w, Telefone: 1, Nif: 1, Endereço: w, Código Postal: 1, País: 
 
 Nome: r, Email: r, Telefone: 1, Nif: 1, Endereço: r, Código Postal: 1, País: r, Informação adicional: r, Método de pagamento: r, Gestor: null
 
+Nome: p, Email: p, Telefone: 0, Nif: 0, Endereço: p, Código Postal: p, País: p, Informação adicional: p, Método de pagamento: p, Gestor: null
+

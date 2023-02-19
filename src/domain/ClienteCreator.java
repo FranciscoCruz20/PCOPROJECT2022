@@ -2,6 +2,9 @@ package domain;
 
 import java.util.Scanner;
 
+/**
+ * Classe creator de objetos do tipo Cliente
+ */
 public class ClienteCreator {
 
     /**

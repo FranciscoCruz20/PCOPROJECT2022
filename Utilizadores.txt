@@ -10,3 +10,5 @@ Nome: a, Email: a, Função: Admin, Password: 1
 
 Nome: a, Email: a, Função: Admin, Password: 1
 
+Nome: p, Email: p, Função: Admin, Password: 0
+

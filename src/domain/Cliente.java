@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Cliente {
     
@@ -22,7 +21,6 @@ public class Cliente {
     private Utilizador gestor;//Gestor corrresponde ao nome do utilizador responsável por este cliente;
     public static ArrayList<Cliente> clientes = new ArrayList<>();//Lista de clientes criados;
 
-
     //Construtor:
     public Cliente(String nome, String email, int telefone, int nif, String endereco, String codigo_postal, String pais, String informacao_adicional, String pagamento_default) {
         this.nome = nome;
@@ -35,8 +33,6 @@ public class Cliente {
         this.informacao_adicional = informacao_adicional;
         this.pagamento_default = pagamento_default;
     }
-
-    //Verificar se o nome do cliente está na lista de clientes:
 
     /**
      * Método que verifica a existencia de um cliente com um nome especifico no ficheiro onde estão guardados os dados dos clientes
@@ -100,47 +96,6 @@ public class Cliente {
         ClienteCreator.criar_cliente();
     }
 
-   /*
-    public static void criar_cliente() {
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Nome:");
-        String nome = input.nextLine();
-
-        System.out.println("Email:");
-        String email = input.nextLine();
-
-        System.out.println("Número de telefone:");
-        int telefone = Integer.parseInt(input.nextLine());
-
-        System.out.println("NIF:");
-        int nif = Integer.parseInt(input.nextLine());
-
-        System.out.println("Código postal:");
-        String codigo_postal = input.nextLine();
-
-        System.out.println("Endereço:");
-        String endereco = input.nextLine();
-
-        System.out.println("País");
-        String  pais = input.nextLine();
-
-        System.out.println("Informação adicional:");
-        String informacao_adicional = input.nextLine();
-
-        System.out.println("Pagamento default:");
-        String pagamento_default = input.nextLine();
-
-        Cliente cliente = new Cliente(nome, email, telefone, nif, endereco, codigo_postal, pais, informacao_adicional, pagamento_default);
-        clientes.add(cliente);
-        Escreverficheiros.writeToFileCliente(clientes, "Clientes.txt");
-        System.out.println("Cliente criado com sucesso");
-        cliente.toString();
-
-    }
-    */
-
     /**
      * Método que procura um cliente pelo nome na lista de clientes
      * @param nome
@@ -154,7 +109,6 @@ public class Cliente {
         }
         return null;
     }
-
 
     //Getters e Setters:
 

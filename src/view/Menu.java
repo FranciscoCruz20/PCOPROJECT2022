@@ -4,17 +4,10 @@ import domain.*;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Classe responsável pelo arranque de todos os casos de uso
+ */
 public class Menu {
-
-    //static Cliente cli = new Cliente("","",000000000,000000000,"","","","","");
-    //static Utilizador util = new Utilizador("nome", "email", "", "");
-    //static ArrayList<Utilizador> utilizadores = new ArrayList<Utilizador>();
-    //static ArrayList<Cliente> clientes = new ArrayList<>();
-    //static Administrador admin = new Administrador("admin", "password");
-    //static Licenca lic = new Licenca(null,"Inátiva",null,null,false,false,100,null);
-    //static UtilizadorTMA utilTMA = new UtilizadorTMA("", 0,0,"",null,null,"");
-    //static Pool p = new Pool("", 0,null,null,"",0,false,false,0,null,null,0);
-
 
     /**
      * Método que representa o menu inicial do programa coma acesso ao menu de administrador e de utilizador
@@ -41,7 +34,6 @@ public class Menu {
             }
         }
     }
-
 
     //Administrador:
 

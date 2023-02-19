@@ -1,14 +1,7 @@
 package domain;
 
-import view.Menu;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 public class UtilizadorTMA {
 
@@ -33,7 +26,6 @@ public class UtilizadorTMA {
         this.estado = "Inativo";
 
     }
-
 
     //Getters e Setters:
 
@@ -164,6 +156,4 @@ public class UtilizadorTMA {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
-
 }

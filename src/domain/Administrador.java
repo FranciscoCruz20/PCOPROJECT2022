@@ -15,6 +15,7 @@ public class Administrador {
 
     /**
      * Método que faz a verificação das credenciais do administrador
+     * Verifica se os inputs inseridos equivalem aos valores defaults
      * @param username
      * @param password
      * @return estado de login
@@ -26,7 +27,6 @@ public class Administrador {
     //Getters e setters:
 
     /**
-     *
      * @return username
      */
     public String getUsername() {
@@ -34,7 +34,6 @@ public class Administrador {
     }
 
     /**
-     *
      * @param username
      */
     public void setUsername(String username) {
@@ -42,7 +41,6 @@ public class Administrador {
     }
 
     /**
-     *
      * @return password
      */
     public String getPassword() {
@@ -50,7 +48,6 @@ public class Administrador {
     }
 
     /**
-     *
      * @param password
      */
     public void setPassword(String password) {

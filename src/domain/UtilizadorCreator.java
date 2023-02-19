@@ -3,6 +3,9 @@ package domain;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Classe creator responsável por criar onjetos do tipo Utilizador
+ */
 public class UtilizadorCreator {
 
     /**

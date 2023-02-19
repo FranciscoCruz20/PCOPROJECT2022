@@ -44,90 +44,29 @@ public class Pool {
 
     }
 
+    /**
+     * Métodoq ue adiciona uma licença na lista de licenças
+     * @param licença
+     */
     public void adicionarLicença(Licenca licença) {
         licencas.add(licença);
     }
 
-
-    /*
-    public void adicionarLicença(Licenca licença) {
-        if (licencas.size() < max_licencas) {
-            licencas.add(licença);
-        } else {
-            System.out.println("A pool já está cheia!");
-        }
-    }
-    */
-
+    /**
+     * Chama o creator de objetos do tipo Pool
+     * @throws FileNotFoundException
+     */
     public static void criar_pool() throws FileNotFoundException {
         PoolCreator.criar_pool();
     }
-    /*
-    public static void confirmar_pool_licenca() {
-        setLicencas_disp(licencas_disp--);
-        setLicencas_usadas(licencas_usadas++);
-    }
 
-    public static void criar_pool() throws FileNotFoundException {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Introduza os dados da pool");
-        System.out.println("Nome:");
-        String nome = input.nextLine();
-        if (verificar_pool(pools, nome)==false) {
-            System.out.println("domain.Pool com este nome já existe");
-            criar_pool();
-        }
-        else {
-            System.out.println("Validade(ano-mês-dia):");
-            try {
-                String validade = input.nextLine();
-
-                // Using parse method to convert the string to LocalDate object
-                LocalDate date = LocalDate.parse(validade, DateTimeFormatter.ISO_DATE);
-
-                // Printing the date object
-                System.out.println(date);
-            }
-            catch (IllegalArgumentException e) {
-                System.out.println("Exception: " + e);
-            }
-            catch (DateTimeParseException e) {
-                System.out.println("Exception: " + e);
-            }
-            setValidade(validade);
-            Date data_criacao = data_criacao();
-            System.out.println("Número máximo de licenças:");
-            int max_licencas = input.nextInt();
-            setLicencas_disp(max_licencas);
-            setMax_licencas(max_licencas);
-            setLicencas_usadas(0);
-            System.out.println("Pretende renovação?(yes/no)");
-            String decisao = input.nextLine();
-            if (decisao == "yes") {
-                setRenovacao(true);
-            }
-            else if (decisao == "no") {
-                setRenovacao(false);
-            }
-            else {
-                System.out.println("Opção inválida");
-            }
-            System.out.println("domain.Cliente:");
-            String cliente = input.nextLine();
-            if (Cliente.verificar_cliente(cliente)==true) {
-                setCliente(Cliente.procurarCliente(cliente));
-                Pool pool = new Pool(nome, max_licencas, data_criacao, getValidade(), getEstado(), getLicencas_disp(), getEstado_pagamento(), getRenovacao(), getPreco(), getCliente(), getLicencas(), getLicencas_usadas());
-                pools.add(pool);
-                Escreverficheiros.writeToFilePool(pools, "Pools.txt");
-                System.out.println("Pool criada com sucesso");
-                pool.toString();
-            }
-        }
-    }
-
+    /**
+     * Méwtodo que verifica a existÊncia de uma pool pelo nome no ficheiro
+     * @param pools
+     * @param nome
+     * @return
+     * @throws FileNotFoundException
      */
-
-
     public static boolean verificar_pool(ArrayList<Pool> pools, String nome) throws FileNotFoundException {
         for(Pool pool : pools) {
             try {
@@ -150,21 +89,11 @@ public class Pool {
         return true;
     }
 
-    /*
-    public static void escolher_pool(String pool) {
-        //Selecionar pool
-        if (pools.contains(pool)) {
-            if (licencas_usadas < max_licencas ) {
-                confirmar_pool_licenca();
-            }
-            else {
-                System.out.println("domain.Pool cheia");
-            }
-        }
-    }
-
+    /**
+     * Método que remove uma licença do ficheiro
+     * @param pool
+     * @throws FileNotFoundException
      */
-
     public void remover_licenca(Pool pool) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         System.out.println("Selecionar licença");
@@ -175,148 +104,264 @@ public class Pool {
         }
     }
 
+    /**
+     * Método que obtém a data de criação da pool
+     * @return
+     */
     public static Date data_criacao() {
         Date data_criacao = new Date();
         System.out.println("Data de criação: "+ data_criacao.toString());
         return data_criacao;
     }
 
-
-
-
     //Getters e Setters:
+
+    /**
+     *
+     * @return licenças usadas
+     */
     public static int getLicencas_usadas() {
         return licencas_usadas;
     }
 
+    /**
+     *
+     * @param licencas_usadas
+     */
     public static void setLicencas_usadas(int licencas_usadas) {
         Pool.licencas_usadas = licencas_usadas;
     }
 
+    /**
+     *
+     * @return número máximo de licenças
+     */
     public static int getMax_licencas() {
         return max_licencas;
     }
 
+    /**
+     *
+     * @param max_licencas
+     */
     public static void setMax_licencas(int max_licencas) {
 
         Pool.max_licencas = max_licencas;
     }
 
+    /**
+     *
+     * @return data de criação
+     */
     public static Date getData_criacao() {
 
         return data_criacao;
     }
 
+    /**
+     *
+     * @param data_criacao
+     */
     public void setData_criacao(Date data_criacao) {
 
         this.data_criacao = data_criacao;
     }
 
+    /**
+     *
+     * @return validade
+     */
     public static String getValidade() {
 
         return validade;
     }
 
+    /**
+     *
+     * @param validade
+     */
     public static void setValidade(String validade) {
 
         Pool.validade = validade;
     }
 
+    /**
+     *
+     * @return estado
+     */
     public static String getEstado() {
 
         return estado;
     }
 
+    /**
+     *
+     * @param estado
+     */
     public void setEstado(String estado) {
 
         this.estado = estado;
     }
 
+    /**
+     *
+     * @return licenças disponiveis
+     */
     public static int getLicencas_disp() {
 
         return licencas_disp;
     }
 
+    /**
+     *
+     * @param licencas_disp
+     */
     public static void setLicencas_disp(int licencas_disp) {
 
         Pool.licencas_disp = licencas_disp;
     }
 
+    /**
+     *
+     * @return estado de pagamento
+     */
     public static boolean getEstado_pagamento() {
 
         return estado_pagamento;
     }
 
+    /**
+     *
+     * @param estado_pagamento
+     */
     public void setEstado_pagamento(boolean estado_pagamento) {
 
         this.estado_pagamento = estado_pagamento;
     }
 
+    /**
+     *
+     * @return renovação
+     */
     public static boolean getRenovacao() {
 
         return renovacao;
     }
 
+    /**
+     *
+     * @param renovacao
+     */
     public static void setRenovacao(boolean renovacao) {
 
         Pool.renovacao = renovacao;
     }
 
+    /**
+     *
+     * @return preço
+     */
     public static float getPreco() {
 
         return preco;
     }
 
-    //Preço da pool é o preço de uma licença X o número máximo de licenças
+    /**
+     * Preço da pool é o preço de uma licença X o número máximo de licenças
+     * @param max_licencas
+     */
     public void setPreco(int max_licencas) {
         this.preco = max_licencas*100;
     }
 
+    /**
+     *
+     * @return cliente
+     */
     public static Cliente getCliente() {
 
         return cliente;
     }
 
+    /**
+     *
+     * @param cliente
+     */
     public static void setCliente(Cliente cliente) {
 
         Pool.cliente = cliente;
     }
 
+    /**
+     *
+     * @return nome
+     */
     public static String getNome() {
         return nome;
     }
 
+    /**
+     *
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     *
+     * @return lista de licenças
+     */
     public static ArrayList<Licenca> getLicencas() {
         return licencas;
     }
 
+    /**
+     *
+     * @param licencas
+     */
     public void setLicencas(ArrayList<Licenca> licencas) {
         this.licencas = licencas;
     }
 
+    /**
+     *
+     * @return lista de pools
+     */
     public static ArrayList<Pool> getPools() {
         return pools;
     }
 
+    /**
+     *
+     * @param pools
+     */
     public void setPools(ArrayList<Pool> pools) {
         this.pools = pools;
     }
 
+    /**
+     *
+     * @return licença
+     */
     public static Licenca getLicenca() {
         return licenca;
     }
 
+    /**
+     *
+     * @param licenca
+     */
     public static void setLicenca(Licenca licenca) {
         Pool.licenca = licenca;
     }
 
     @Override
+    /**
+     * Método que mostra a informação da pool
+     */
     public String toString() {
-        return "domain.Pool{" +
+        return "Pool{" +
                 "nome='" + nome + '\'' +
                 '}';
     }

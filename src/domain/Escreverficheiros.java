@@ -3,7 +3,9 @@ package domain;
 import java.io.*;
 import java.util.ArrayList;
 
-//Classe dedicada a ficheiros:
+/**
+ * Classe dedicada a leitura e escrita de ficheiros
+ */
 public class Escreverficheiros {
 
     /**
@@ -23,7 +25,6 @@ public class Escreverficheiros {
         }
         return lines;
     }
-
 
     /**
      * Método que escreve os dados dos utilizadores num ficheiro txt. especifico
