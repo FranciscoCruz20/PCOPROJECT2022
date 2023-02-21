@@ -83,7 +83,7 @@ public class Escreverficheiros {
         try (FileWriter fileWriter = new FileWriter("Licenças.txt",true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             for (Licenca licenca : licencas) {
-                printWriter.println("Data de criação: " + licenca.getData_criacao() + "Estado: " + licenca.getEstado() + "Validade: " + licenca.getValidade() + "domain.UtilizadorTMA:" + licenca.getUtilizadortma() + "Pagamento: " + licenca.getPagamento() + "Renovação: " + Licenca.getRenovacao() + "Preço " + licenca.getPreco() + "Clientes: " + licenca.getCliente());
+                printWriter.println("Data de criação: " + licenca.getData_criacao() + "Estado: " + licenca.getEstado() + "Validade: " + licenca.getValidade() + "domain.UtilizadorTMA:" + licenca.getUtilizadortma() + "Pagamento: " + licenca.getPagamento() + "Renovação: " + Licenca.getRenovacao() + "Preço " + licenca.getPreco() + "Clientes: " + licenca.getCliente() + " " + "Pool:" + Licenca.getPool());
             }
         } catch (Exception e) {
             e.printStackTrace();

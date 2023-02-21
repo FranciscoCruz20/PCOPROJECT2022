@@ -22,14 +22,15 @@ public class LicencaCreator {
      * @param renovacao
      * @param preco
      * @param cliente
+     * @param pool
      */
-    public static Licenca criarLicenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente) throws FileNotFoundException {
+    public static Licenca criarLicenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente, String pool) throws FileNotFoundException {
 
-        Licenca licenca = new Licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
+        Licenca licenca = new Licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente(), Licenca.getPool());
         Licenca.licencas.add(licenca);
         Escreverficheiros.writeToFileLicenca(Licenca.licencas, "Licenças.txt");
         System.out.println("Licença criada com sucesso");
-        return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
+        return new Licenca(data_criacao, estado, validade, utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente(), Licenca.getPool());
     }
 
 }

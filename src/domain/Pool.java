@@ -45,14 +45,6 @@ public class Pool {
     }
 
     /**
-     * Métodoq ue adiciona uma licença na lista de licenças
-     * @param licença
-     */
-    public void adicionarLicença(Licenca licença) {
-        licencas.add(licença);
-    }
-
-    /**
      * Chama o creator de objetos do tipo Pool
      * @throws FileNotFoundException
      */
@@ -87,21 +79,6 @@ public class Pool {
             }
         }
         return true;
-    }
-
-    /**
-     * Método que remove uma licença do ficheiro
-     * @param pool
-     * @throws FileNotFoundException
-     */
-    public void remover_licenca(Pool pool) throws FileNotFoundException {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Selecionar licença");
-        int opcao = input.nextInt();
-        if (opcao==0 && opcao>Pool.getMax_licencas()) {
-        licencas.remove(pool);
-
-        }
     }
 
     /**

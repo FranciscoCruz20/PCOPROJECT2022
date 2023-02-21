@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Este Information Expert sugere que a responsabilidade de executar uma ação sobre o caso de uso 4
  * deve ser atribuída ao objeto que possui a informação necessária para executá-la.
  * Neste caso esta classe tem como responsabilidade os inputs dos valores dos atríbutos da classe Licenca.
- * E a confirmação de craiçãod e uma licença com os respetidos valores atribuidos.
+ * E a confirmação de craição de uma licença com os respetidos valores atribuidos.
  * E sugere a responsabilidade de criação do objeto do tipo Licenca para a classe LicencaCreator.
  */
 public class HandlerUC04 {
@@ -35,10 +35,12 @@ public class HandlerUC04 {
             System.out.println("Cliente:");
             String cliente = input.nextLine();
             if (Cliente.verificar_cliente(cliente) == true) {
+                System.out.println("Inserir Pool:");
+                String pool = input.nextLine();
                 Licenca.setCliente(cliente);
                 HandlerUC06.data_criacao();
                 estado = Licenca.getEstado();
-                HandlerUC04.confirmar_licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
+                HandlerUC04.confirmar_licenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente(), Licenca.getPool());
             } else {
                 System.out.println("Dados inseridos incorretos");
             }
@@ -61,13 +63,13 @@ public class HandlerUC04 {
      * @param cliente
      * @throws FileNotFoundException
      */
-    public static void confirmar_licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente) throws FileNotFoundException {
+    public static void confirmar_licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente, String pool) throws FileNotFoundException {
 
         Scanner input = new Scanner(System.in);
         System.out.println("1-Confirmar licença");
         int opcao = input.nextInt();
         if (opcao == 1) {
-            LicencaCreator.criarLicenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente());
+            LicencaCreator.criarLicenca(data_criacao, estado, Licenca.getValidade(), utilizadortma, Licenca.getPagamento(), Licenca.getRenovacao(), Licenca.getPreco(), Licenca.getCliente(), Licenca.getPool());
 
         } else {
             System.out.println("Opção inválida");

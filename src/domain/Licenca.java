@@ -17,9 +17,9 @@ public class Licenca {
     private static boolean renovacao;
     private static float preco;
     private static String cliente;
+    private static String pool;
     public static ArrayList<Licenca> licencas = new ArrayList<>();
     public static ArrayList<UtilizadorTMA> utilizadorestma = new ArrayList<UtilizadorTMA>();
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
 
     //Construtor:
     /**
@@ -37,7 +37,7 @@ public class Licenca {
      * @param preco
      * @param cliente
      */
-    public Licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente) {
+    public Licenca(Date data_criacao, String estado, String validade, String utilizadortma, boolean pagamento, boolean renovacao, float preco, String cliente, String pool) {
         this.data_criacao = data_criacao;
         this.estado = "Inativa";
         this.validade = validade;
@@ -46,6 +46,7 @@ public class Licenca {
         this.renovacao = false;
         this.preco = 100;
         this.cliente = cliente;
+        this.pool = pool;
     }
 
     //Getters e Setters:
@@ -175,6 +176,22 @@ public class Licenca {
      */
     public void setData_criacao(Date data_criacao) {
         this.data_criacao = data_criacao;
+    }
+
+    /**
+     *
+     * @return pool
+     */
+    public static String getPool() {
+        return pool;
+    }
+
+    /**
+     *
+     * @param pool
+     */
+    public static void setPool(String pool) {
+        Licenca.pool = pool;
     }
 
     /**
